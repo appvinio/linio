@@ -1,0 +1,7 @@
+name: linio
+description: Linio Logger
+version: 0.0.1
+homepage: https://appvinio.com
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
