@@ -20,10 +20,12 @@ class TagManagerCommand extends LinioCommand {
     if (argResults != null) {
       if (argResults!.wasParsed('allow')) {
         Linio.instance.tagManager.allow(argResults!['allow']);
+        return ['$description: Allow ${argResults!['allow']}'];
       } else if (argResults!.wasParsed('block')) {
         Linio.instance.tagManager.block(argResults!['block']);
+        return ['$description: Block ${argResults!['block']}'];
       }
     }
-    return <String>[];
+    return [];
   }
 }

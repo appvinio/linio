@@ -17,6 +17,10 @@ class LogPointCommand extends LinioCommand {
     final stackTraceLines = StackTrace.current.toString().split('\n');
     final preIndex =
     stackTraceLines.indexWhere((element) => element.contains('Linio'));
-    return [stackTraceLines[preIndex + 1]];
+    final line = stackTraceLines[preIndex + 1];
+    final startPointPrefix = line.indexOf('(');
+    final lastPointPrefix = line.indexOf(')') + 1;
+    final point = line.substring(startPointPrefix, lastPointPrefix);
+    return [point];
   }
 }

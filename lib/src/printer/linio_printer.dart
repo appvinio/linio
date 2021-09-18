@@ -13,7 +13,7 @@ abstract class LinioPrinter {
         <String>[],
             (List<String> previousValue, String element) =>
         previousValue..addAll(element.split('\n')))
-        .map((line) => headers.fold(
+        .map((line) => headers.reversed.fold(
         line,
             (String previousValue, element) =>
             element.prepareHeader(command, previousValue, options)))

@@ -18,11 +18,14 @@ class LinioTagManager {
     }
   }
 
-  bool shouldLog(String tag) {
+  bool shouldLog(LinioOptions options) {
+    if (options.tag.isEmpty) {
+      return true;
+    }
     if (blockList.contains('all')) {
-      return allowList.contains(tag);
+      return allowList.contains(options.tag);
     } else {
-      return !blockList.contains(tag);
+      return !blockList.contains(options.tag);
     }
   }
 }

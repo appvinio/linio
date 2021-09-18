@@ -2,77 +2,86 @@ library linio;
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:developer' as developer;
 
 import 'args/args.dart';
-export 'args/args.dart';
 import 'args/command_runner.dart';
+
+export 'args/args.dart';
 export 'args/command_runner.dart';
 
-part 'src/options/linio_log_level.dart';
-part 'src/options/linio_log_type.dart';
-part 'src/options/linio_options.dart';
-part 'src/managers/linio_level_manager.dart';
-part 'src/managers/linio_tag_manager.dart';
-part 'src/filters/linio_filter.dart';
-part 'src/filters/tag_linio_filter.dart';
-part 'src/filters/level_linio_filter.dart';
-part 'src/commands/linio_command_runner.dart';
-part 'src/commands/linio_command.dart';
 part 'src/commands/empty_command.dart';
-part 'src/commands/log_point_command.dart';
-part 'src/commands/tag_manager_command.dart';
+
 part 'src/commands/level_manager_command.dart';
+
+part 'src/commands/linio_command.dart';
+
+part 'src/commands/linio_command_runner.dart';
+
+part 'src/commands/log_point_command.dart';
+
 part 'src/commands/stopwatch_command.dart';
-part 'src/printer/linio_printer.dart';
-part 'src/printer/console_printer.dart';
-part 'src/printer/terminal_printer.dart';
-part 'src/formatters/linio_formatter.dart';
-part 'src/formatters/simple_formatter.dart';
+
+part 'src/commands/tag_manager_command.dart';
+
+part 'src/filters/level_linio_filter.dart';
+
+part 'src/filters/linio_filter.dart';
+
+part 'src/filters/tag_linio_filter.dart';
+
 part 'src/formatters/file_formatter.dart';
-part 'src/header_footers/linio_header_footer.dart';
-part 'src/header_footers/grep_console_header.dart';
-part 'src/header_footers/uptime_header.dart';
+
+part 'src/formatters/linio_formatter.dart';
+
+part 'src/formatters/simple_formatter.dart';
+
 part 'src/header_footers/datetime_header.dart';
-part 'src/header_footers/live_live_header.dart';
+
+part 'src/header_footers/grep_console_header.dart';
+
+part 'src/header_footers/linio_header_footer.dart';
+
+part 'src/header_footers/live_linio_header.dart';
+
 part 'src/header_footers/tag_header.dart';
+
+part 'src/header_footers/uptime_header.dart';
+
+part 'src/managers/linio_level_manager.dart';
+
+part 'src/managers/linio_tag_manager.dart';
+
 part 'src/manipulators/linio_manipulator.dart';
 
+part 'src/options/linio_log_level.dart';
+
+part 'src/options/linio_log_type.dart';
+
+part 'src/options/linio_options.dart';
+
+part 'src/printer/console_printer.dart';
+
+part 'src/printer/linio_printer.dart';
+
+part 'src/printer/terminal_printer.dart';
+
 class Linio {
-  Linio({
+  Linio._({
     this.printers = const [],
     this.formatters = const [SimpleLinioFormatter()],
     this.headers = const [],
     this.manipulators = const [],
     this.filters = const [],
   }) {
-    instance = this;
-
-    instance.streamController = StreamController<Function>();
-    instance.streamController.stream
-        .asyncMap((event) => event())
-        .listen((event) {});
-    instance.commandRunner = LinioCommandRunner('linio', 'linio');
-    instance.commandRunner.argParser.addOption('tag', abbr: 't');
-    instance.commandRunner.argParser.addOption('mode',
-        abbr: 'm', allowed: ['s', 'l', 'static', 'live'], defaultsTo: 's');
-    instance.commandRunner.argParser.addOption('level',
-        abbr: 'l',
-        allowed: [
-          'd',
-          'i',
-          'w',
-          'e',
-          'f',
-          'debug',
-          'info',
-          'warn',
-          'error',
-          'fatal'
-        ],
-        defaultsTo: 'd');
-    instance.manipulators.forEach((element) {
-      instance.commandRunner.addCommand(element);
+    streamController = StreamController<Function>();
+    streamController.stream.asyncMap((event) => event()).listen((event) {});
+    commandRunner = LinioCommandRunner('linio', 'linio');
+    commandRunner.argParser.addOption('tag', abbr: 't');
+    commandRunner.argParser.addOption('mode', abbr: 'm', allowed: ['s', 'l', 'static', 'live'], defaultsTo: 's');
+    commandRunner.argParser.addOption('level',
+        abbr: 'l', allowed: ['d', 'i', 'w', 'e', 'f', 'debug', 'info', 'warn', 'error', 'fatal'], defaultsTo: 'd');
+    manipulators.forEach((element) {
+      commandRunner.addCommand(element);
     });
 
     printers.forEach((printer) {
@@ -80,16 +89,39 @@ class Linio {
     });
   }
 
-  factory Linio.console() {
-    instance = Linio(printers: [
+  factory Linio.custom(
+      {List<LinioPrinter> printers = const [],
+      List<LinioFormatter> formatters = const [SimpleLinioFormatter()],
+      List<LinioHeaderFooter> headers = const [],
+      List<LinioCommand> manipulators = const [],
+      List<LinioFilter> filters = const [],
+      String name = 'main'}) {
+    _instances[name] = Linio._(
+      printers: printers,
+      formatters: formatters,
+      headers: headers,
+      manipulators: manipulators,
+      filters: filters,
+    );
+    return _instances[name]!;
+  }
+
+  factory Linio.console([String name = 'main']) {
+    _instances[name] = Linio._(printers: [
       ConsolePrinter(),
     ]);
     return instance;
   }
 
-  static late Linio instance;
+  factory Linio([String name = 'main']) {
+    return instance;
+  }
 
-  late CommandRunner<List<String>> commandRunner;
+  static Map<String, Linio> _instances = {};
+
+  static Linio get instance => _instances['main']!;
+
+  static late CommandRunner<List<String>> commandRunner;
   List<LinioHeaderFooter> headers;
   List<LinioCommand> manipulators;
   List<LinioPrinter> printers;
@@ -100,19 +132,13 @@ class Linio {
 
   late StreamController<Function> streamController;
 
-  static void log(dynamic logOrCommand, [dynamic log]) {
-    final linioCommand = instance.commandRunner.argParser.parse((log != null
-        ? logOrCommand
-        : (logOrCommand is String ? logOrCommand : ''))
-        .toString()
-        .split(' '));
+  void log(dynamic logOrCommand, [dynamic log]) {
+    final linioCommand = commandRunner.argParser
+        .parse((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' '));
     List<String> linioCommandResult;
     if (linioCommand.command?.name?.isNotEmpty == true) {
-      linioCommandResult = instance.commandRunner.run((log != null
-          ? logOrCommand
-          : (logOrCommand is String ? logOrCommand : ''))
-          .toString()
-          .split(' ')) ??
+      linioCommandResult = commandRunner
+              .run((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' ')) ??
           [];
       if (log == null && logOrCommand != null) {
         logOrCommand = null;
@@ -123,7 +149,7 @@ class Linio {
 
     final linioLog = log ?? logOrCommand;
 
-    String linioTag = linioCommand['tag'] ?? '';
+    String linioTag = linioCommand['tag'] ?? log != null ? logOrCommand : '';
 
     LinioLogType linioLogType = LinioLogType.static;
     switch (linioCommand['mode']) {
@@ -159,19 +185,15 @@ class Linio {
         linioLogLevel = LinioLogLevel.fatal;
         break;
     }
-    final options = LinioOptions(linioLogType, linioLogLevel, linioTag);
+    final options = LinioOptions(linioLogType, linioLogLevel, linioTag, linioLog ?? '', linioCommand);
     if (instance.filters.any((element) => !element.shouldLog(options))) {
       return;
     }
     instance._print(linioCommand, linioCommandResult, linioLog, options);
   }
 
-  void _print(ArgResults command, List<String> commandResult, dynamic log,
-      LinioOptions options) {
-    final formatter =
-    formatters.firstWhere((element) => element.handleLog(log));
-    printers.forEach((printer) =>
-        printer.print(
-            command, [...commandResult, ...formatter.format(log)], options));
+  void _print(ArgResults command, List<String> commandResult, dynamic log, LinioOptions options) {
+    final formatter = formatters.firstWhere((element) => element.handleLog(log));
+    printers.forEach((printer) => printer.print(command, [...commandResult, ...formatter.format(log)], options));
   }
 }
