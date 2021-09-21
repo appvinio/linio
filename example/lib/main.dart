@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:linio/linio.dart';
+import 'package:linio/linio.dart';
 
 void main() {
   Linio.custom(
     headers: [
-      // UpTimeLinioHeader(),
+      // UpTimeLogHeader(),
       DateTimeLinioHeader(),
       TagLinioHeader(),
       LevelConsoleLinioHeader(),
@@ -28,7 +29,7 @@ void main() {
       SimpleLinioFormatter(),
     ],
   );
-  Linio.log('stopwatch -s counter_timer', 'Start Stopwatch');
+  L.log('stopwatch -s counter_timer', 'Start Stopwatch');
 
   runApp(MyApp());
 }
@@ -79,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    Linio.log('stopwatch -s counter_timer', 'Start timer');
+   L.log('stopwatch -s counter_timer', 'Start timer');
     super.initState();
   }
 
@@ -92,8 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
 
-      Linio.log('stopwatch -l counter_timer', 'Duration since last click');
-      // Linio.log('--mode live --level error', 'Current counter value: $_counter');
+     L.log('stopwatch -l counter_timer', 'Duration since last click');
+      //L.log('--mode live --level error', 'Current counter value: $_counter');
     });
   }
 
@@ -120,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Divider(),
           ElevatedButton(
             onPressed: () {
-              Linio.log('log_point');
+             L.log('log_point');
             },
             child: Text('Log point'),
           ),
@@ -139,13 +140,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Linio.log('tag_manager -b all');
+                   L.log('tag_manager -b all');
                   },
                   child: Text('Block all'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Linio.log('tag_manager -a all');
+                   L.log('tag_manager -a all');
                   },
                   child: Text('Allow all'),
                 ),
@@ -155,13 +156,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Linio.log('tag_manager -a simple_tag');
+                   L.log('tag_manager -a simple_tag');
                   },
                   child: Text('Allow simple_tag'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Linio.log('tag_manager -b simple_tag');
+                   L.log('tag_manager -b simple_tag');
                   },
                   child: Text('Block simple_tag'),
                 ),
@@ -171,13 +172,13 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Linio.log('tag_manager -a compound_tag');
+                   L.log('tag_manager -a compound_tag');
                   },
                   child: Text('Allow compound_tag'),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Linio.log('tag_manager -b compound_tag');
+                   L.log('tag_manager -b compound_tag');
                   },
                   child: Text('Block compound_tag'),
                 ),
@@ -190,13 +191,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
               onPressed: () {
-                Linio.log('simple_tag', 'simple message');
+               L.log('simple_tag', 'simple message');
               },
               child: Text('Log simple_tag'),
             ),
             ElevatedButton(
               onPressed: () {
-                Linio.log('compound_tag', 'simple log');
+               L.log('compound_tag', 'simple log');
               },
               child: Text('log with compound_tag'),
             ),
@@ -212,19 +213,19 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         ElevatedButton(
           onPressed: () {
-            Linio.log('stopwatch -s simple_timer');
+           L.log('stopwatch -s simple_timer');
           },
           child: Text('Start timer'),
         ),
         ElevatedButton(
           onPressed: () {
-            Linio.log('stopwatch -l simple_timer');
+           L.log('stopwatch -l simple_timer');
           },
           child: Text('Make a Loop'),
         ),
         ElevatedButton(
           onPressed: () {
-            Linio.log('stopwatch -e simple_timer');
+           L.log('stopwatch -e simple_timer');
           },
           child: Text('Stop Timer'),
         ),
@@ -238,7 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         ElevatedButton(
           onPressed: () {
-            Linio.log('simple_tag', 'simple log');
+           L.log('simple_tag', 'simple log');
           },
           child: Text('log with simple_tag'),
         ),
@@ -249,7 +250,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ElevatedButton simpleLog() {
     return ElevatedButton(
       onPressed: () {
-        Linio.log('simple log');
+       L.log('simple log');
       },
       child: Text('Simple log'),
     );
