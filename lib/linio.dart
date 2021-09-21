@@ -37,7 +37,7 @@ part 'src/formatters/simple_formatter.dart';
 
 part 'src/header_footers/datetime_header.dart';
 
-part 'src/header_footers/grep_console_header.dart';
+part 'src/header_footers/level_console_header.dart';
 
 part 'src/header_footers/linio_header_footer.dart';
 
@@ -66,6 +66,7 @@ part 'src/printer/linio_printer.dart';
 part 'src/printer/terminal_printer.dart';
 
 class Linio {
+
   Linio._({
     this.printers = const [],
     this.formatters = const [SimpleLinioFormatter()],
@@ -107,14 +108,19 @@ class Linio {
   }
 
   factory Linio.console([String name = 'main']) {
-    _instances[name] = Linio._(printers: [
-      ConsolePrinter(),
-    ]);
-    return instance;
+    _instances[name] = Linio._(
+      printers: [
+        ConsolePrinter(),
+      ],
+      headers: [
+        TagLinioHeader(),
+      ]
+    );
+    return _instances[name]!;
   }
 
   factory Linio([String name = 'main']) {
-    return instance;
+    return _instances[name]!;
   }
 
   static Map<String, Linio> _instances = {};

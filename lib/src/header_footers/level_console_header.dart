@@ -1,6 +1,6 @@
 part of linio;
 
-class GrepConsoleLinioHeader extends LinioHeaderFooter {
+class LevelConsoleLinioHeader extends LinioHeaderFooter {
   @override
   String prepareHeader(ArgResults command, String log, LinioOptions options) {
     switch (options.level) {

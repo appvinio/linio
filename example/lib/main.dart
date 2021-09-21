@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:linio/linio.dart';
 
 void main() {
-  Linio(
+  Linio.custom(
     headers: [
       // UpTimeLinioHeader(),
       DateTimeLinioHeader(),
       TagLinioHeader(),
-      GrepConsoleLinioHeader(),
+      LevelConsoleLinioHeader(),
       LiveLinioHeader(),
     ],
     filters: [
