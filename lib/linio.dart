@@ -47,6 +47,8 @@ part 'src/header_footers/tag_header.dart';
 
 part 'src/header_footers/uptime_header.dart';
 
+part 'src/instance/linio.dart';
+
 part 'src/managers/linio_level_manager.dart';
 
 part 'src/managers/linio_tag_manager.dart';
@@ -65,5 +67,4 @@ part 'src/printer/linio_printer.dart';
 
 part 'src/printer/terminal_printer.dart';
 
-part 'src/instance/linio.dart';
-
+part 'src/shared/initiable.dart';

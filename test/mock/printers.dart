@@ -6,6 +6,5 @@ class TestConsole extends LinioPrinter {
   @override
   void printLog(ArgResults command, List<String> log, LinioOptions options) {
     logs.addAll(log);
-    log.forEach(print);
   }
 }

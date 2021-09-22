@@ -24,6 +24,10 @@ class Linio {
     printers.forEach((printer) {
       printer.headers.addAll(headers);
     });
+
+    filters.forEach((filter) {
+      filter.init(this);
+    });
   }
 
   factory Linio.custom(
@@ -40,19 +44,6 @@ class Linio {
       manipulators: manipulators,
       filters: filters,
     );
-    return _instances[name]!;
-  }
-
-  factory Linio.console([String name = 'main']) {
-    _instances[name] = Linio._(printers: [
-      ConsolePrinter(),
-    ], headers: [
-      TagLinioHeader(),
-    ]);
-    return _instances[name]!;
-  }
-
-  factory Linio([String name = 'main']) {
     return _instances[name]!;
   }
 

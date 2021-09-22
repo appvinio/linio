@@ -15,7 +15,7 @@ void main() {
       TagLinioFilter(),
     ],
     manipulators: [
-      EmptyCommand(),
+      // EmptyCommand(),
       StopwatchCommand(),
       TagManagerCommand(),
       LogPointCommand(),
