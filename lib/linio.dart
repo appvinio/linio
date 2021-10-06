@@ -49,6 +49,10 @@ part 'src/header_footers/uptime_header.dart';
 
 part 'src/instance/linio.dart';
 
+part 'src/managers/inline_call/linio_inline.dart';
+
+part 'src/managers/inline_call/linio_level_inline.dart';
+
 part 'src/managers/linio_level_manager.dart';
 
 part 'src/managers/linio_tag_manager.dart';

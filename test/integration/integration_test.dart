@@ -17,4 +17,16 @@ void main() {
       expect(console.logs, ['===t===','===e===','===s===','===t===',]);
     });
   });
+
+  group('level and tag mixer test', () {
+    final levelHeader = LevelConsoleLinioHeader();
+    final tagHeader = TagLinioHeader();
+
+    test('single formatter', () {
+      final console = TestConsole();
+      Linio linio = Linio.custom(printers: [console], headers: [levelHeader, tagHeader]);
+      linio.log('-l fatal -t TEST','test');
+      expect(console.logs, ['[FATAL] TEST test',]);
+    });
+  });
 }

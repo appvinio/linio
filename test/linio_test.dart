@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 import 'mock/mocks.dart';
 
-class MockDateTimeProvider extends Mock implements DateTimeProvider{}
+class MockDateTimeProvider extends Mock implements DartDateTimeProvider{}
 
 void main() {
   group('simple test', () {

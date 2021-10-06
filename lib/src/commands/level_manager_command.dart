@@ -19,9 +19,9 @@ class LevelManagerCommand extends LinioCommand {
   run() {
     if (argResults != null) {
       if (argResults!.wasParsed('allow')) {
-        Linio.instance.levelManager.allow(LinioLogLevel.values.firstWhere((element) => element.toString() == argResults!['allow']));
+        linio.levelManager.allow(LinioLogLevel.values.firstWhere((element) => element.toString().contains(argResults!['allow'])));
       } else if (argResults!.wasParsed('block')) {
-        Linio.instance.levelManager.block(LinioLogLevel.values.firstWhere((element) => element.toString() == argResults!['block']));
+        linio.levelManager.block(LinioLogLevel.values.firstWhere((element) => element.toString().contains(argResults!['block'])));
       }
     }
     return <String>[];

@@ -1,6 +1,7 @@
 part of linio;
 
 Linio get L => Linio._instances['main']!;
+LinioInlineBuilder get LB => LinioInlineBuilder.b(name: 'main');
 
 class Linio {
   Linio._({
@@ -10,6 +11,7 @@ class Linio {
     this.manipulators = const [],
     this.filters = const [],
   }) {
+
     streamController = StreamController<Function>();
     streamController.stream.asyncMap((event) => event()).listen((event) {});
     commandRunner = LinioCommandRunner('linio', 'linio');
@@ -37,19 +39,43 @@ class Linio {
       List<LinioCommand> manipulators = const [],
       List<LinioFilter> filters = const [],
       String name = 'main'}) {
-    _instances[name] = Linio._(
-      printers: printers,
-      formatters: formatters,
-      headers: headers,
-      manipulators: manipulators,
-      filters: filters,
-    );
+    _instances.putIfAbsent(name, () => Linio._(
+        printers: printers,
+        formatters: formatters,
+        headers: headers,
+        manipulators: manipulators,
+        filters: filters,
+      ));
     return _instances[name]!;
+  }
+
+  factory Linio.init() {
+    _instances['main'] = Linio._(
+      printers: [
+        ConsolePrinter(),
+      ],
+      formatters: [
+        SimpleLinioFormatter(),
+      ],
+      headers: [
+        LevelConsoleLinioHeader(),
+        TagLinioHeader(),
+      ],
+      manipulators: [
+        TagManagerCommand(),
+        LevelManagerCommand(),
+      ],
+      filters: [
+        TagLinioFilter(),
+        LevelLinioFilter(),
+      ],
+    );
+    return _instances['main']!;
   }
 
   static Map<String, Linio> _instances = {};
 
-  static Linio get instance => _instances['main']!;
+  static Linio instance([String name = 'main']) => _instances[name]!;
 
   static late CommandRunner<List<String>> commandRunner;
   List<LinioHeaderFooter> headers;
@@ -79,7 +105,7 @@ class Linio {
 
     final linioLog = log ?? logOrCommand;
 
-    String linioTag = linioCommand['tag'] ?? log != null ? logOrCommand : '';
+    String linioTag = linioCommand['tag'] ?? (log != null ? logOrCommand : '');
 
     LinioLogType linioLogType = LinioLogType.static;
     switch (linioCommand['mode']) {
@@ -116,10 +142,10 @@ class Linio {
         break;
     }
     final options = LinioOptions(linioLogType, linioLogLevel, linioTag, linioLog ?? '', linioCommand);
-    if (instance.filters.any((element) => !element.shouldLog(options))) {
+    if (filters.any((element) => !element.shouldLog(options))) {
       return;
     }
-    instance._print(linioCommand, linioCommandResult, linioLog, options);
+    _print(linioCommand, linioCommandResult, linioLog, options);
   }
 
   void _print(ArgResults command, List<String> commandResult, dynamic log, LinioOptions options) {

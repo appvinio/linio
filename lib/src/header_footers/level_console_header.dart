@@ -15,6 +15,5 @@ class LevelConsoleLinioHeader extends LinioHeaderFooter {
       case LinioLogLevel.fatal:
         return "[FATAL] $log";
     }
-    return '';
   }
 }

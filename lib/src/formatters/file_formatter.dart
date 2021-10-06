@@ -5,7 +5,7 @@ class FileLinioFormatter implements LinioFormatter {
   List<String> format(dynamic log) {
     final File file = log;
     return [
-      'File name ${file.absolute.path}',
+      'File name: ${file.absolute.path}',
       'File exists: ${file.existsSync()}',
       'File size: ${file.lengthSync()}',
       'File last accessed: ${file.lastAccessedSync().toIso8601String()}',
