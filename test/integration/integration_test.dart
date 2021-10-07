@@ -10,7 +10,7 @@ void main() {
     final testFormatter = TestFormatter();
     final testHeader1 = TestHeader('===');
 
-    test('single formatter', () {
+    test('simple header', () {
       final console = TestConsole();
       Linio linio = Linio.custom(printers: [console], formatters: [testFormatter], headers: [testHeader1]);
       linio.log('test');

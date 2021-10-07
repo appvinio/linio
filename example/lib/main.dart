@@ -29,7 +29,7 @@ void main() {
       SimpleLinioFormatter(),
     ],
   );
-  L.log('stopwatch -s counter_timer', 'Start Stopwatch');
+  LC.log('stopwatch -s counter_timer', 'Start Stopwatch');
 
   runApp(MyApp());
 }
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-   L.log('stopwatch -s counter_timer', 'Start timer');
+   LC.log('stopwatch -s counter_timer', 'Start timer');
     super.initState();
   }
 
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
 
-     L.log('stopwatch -l counter_timer', 'Duration since last click');
+     LC.log('stopwatch -l counter_timer', 'Duration since last click');
       //L.log('--mode live --level error', 'Current counter value: $_counter');
     });
   }
@@ -191,13 +191,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
               onPressed: () {
-               L.log('simple_tag', 'simple message');
+               LC.log('simple_tag', 'simple message');
               },
               child: Text('Log simple_tag'),
             ),
             ElevatedButton(
               onPressed: () {
-               L.log('compound_tag', 'simple log');
+               LC.log('compound_tag', 'simple log');
               },
               child: Text('log with compound_tag'),
             ),
@@ -239,7 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         ElevatedButton(
           onPressed: () {
-           L.log('simple_tag', 'simple log');
+           LC.log('simple_tag', 'simple log');
           },
           child: Text('log with simple_tag'),
         ),

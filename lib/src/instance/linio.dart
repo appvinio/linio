@@ -1,7 +1,7 @@
 part of linio;
 
-Linio get L => Linio._instances['main']!;
-LinioInlineBuilder get LB => LinioInlineBuilder.b(name: 'main');
+Linio get LC => Linio._instances['main']!;
+LinioInlineBuilder get L => LinioInlineBuilder.b(name: 'main');
 
 class Linio {
   Linio._({
@@ -30,6 +30,9 @@ class Linio {
     filters.forEach((filter) {
       filter.init(this);
     });
+    manipulators.forEach((manipulator) {
+      manipulator.init(this);
+    });
   }
 
   factory Linio.custom(
@@ -39,13 +42,13 @@ class Linio {
       List<LinioCommand> manipulators = const [],
       List<LinioFilter> filters = const [],
       String name = 'main'}) {
-    _instances.putIfAbsent(name, () => Linio._(
+    _instances[name] = Linio._(
         printers: printers,
         formatters: formatters,
         headers: headers,
         manipulators: manipulators,
         filters: filters,
-      ));
+      );
     return _instances[name]!;
   }
 
@@ -62,8 +65,8 @@ class Linio {
         TagLinioHeader(),
       ],
       manipulators: [
-        TagManagerCommand(),
         LevelManagerCommand(),
+        TagManagerCommand(),
       ],
       filters: [
         TagLinioFilter(),

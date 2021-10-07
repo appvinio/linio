@@ -2,18 +2,24 @@ part of linio;
 
 class LinioInlineBuilder {
   final Linio linio;
-  final Map<String, String> params = {};
+  final List<String> params = [];
 
   LinioInlineBuilder._(this.linio);
 
   factory LinioInlineBuilder.b({String name = 'main'}) {
-    return LinioInlineBuilder._(Linio._());
+    return LinioInlineBuilder._(Linio.instance(name));
   }
 
   LinioInlineBuilder t(String tag) {
-    params.update('-t', (value) => tag, ifAbsent: () => tag);
+    params.add('-t $tag');
     return this;
   }
+
+  LinioInlineBuilder get d => l(LinioLogLevel.debug);
+  LinioInlineBuilder get i => l(LinioLogLevel.info);
+  LinioInlineBuilder get w => l(LinioLogLevel.warn);
+  LinioInlineBuilder get e => l(LinioLogLevel.error);
+  LinioInlineBuilder get f => l(LinioLogLevel.fatal);
 
   LinioInlineBuilder l(LinioLogLevel level) {
     String value;
@@ -34,15 +40,11 @@ class LinioInlineBuilder {
         value = 'f';
         break;
     }
-    params.update('-l', (value) => value, ifAbsent: () => value);
+    params.add('-l $value');
     return this;
   }
 
   void log(String log) {
-    //TODO Rafał
-    // linio.log(logOrCommand)
+    linio.log(params.join(' '), log);
   }
-
-
-
 }

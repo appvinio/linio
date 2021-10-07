@@ -29,11 +29,66 @@ factory Linio.custom({
 
 #### Simple logs
 `Linio.log('some log'); // some log`
-`Linio.log('some log'); // TAG test`
+`Linio.log('some_tag', 'some log'); // some_tag some log`
 
 #### Headers & Footers
-Linio has build in few type header. You can create your own.
+Linio has built in few type header. You can create your own.
 
- - DateTime 	`Linio.log('log'); // 2020-01-01T00:00:00.000 log`
- - Uptime 		`Linio.log('log'); // 10.000 log`
- - Tag			`Linio.log('TAG', 'log'); // TAG log`
+##### `TagLinioHeader`
+
+```
+factory Linio.custom({
+  ...
+  List<LinioHeaderFooter> headers = const [TagLinioHeader()],
+  ...
+})
+
+Output:
+`Linio.log('TAG', 'log'); // TAG log`
+
+##### `DateTimeLinioHeader`
+
+```
+factory Linio.custom({
+  ...
+  List<LinioHeaderFooter> headers = const [DateTimeLinioHeader()],
+  ...
+})
+```
+
+You can also provide your own date provider
+
+
+```
+factory Linio.custom({
+  ...
+  List<LinioHeaderFooter> headers = const [DateTimeLinioHeader(dateTimeProvider: OwnDateTimeProvider()],
+  ...
+})
+
+Output:
+`Linio.log('log'); // 2020-01-01T00:00:00.000 log`
+
+
+##### `UptimeLinioHeader`
+
+```
+factory Linio.custom({
+  ...
+  List<LinioHeaderFooter> headers = const [UptimeLinioHeader()],
+  ...
+})
+```
+
+You can also provide your own date provider
+
+
+```
+factory Linio.custom({
+  ...
+  List<LinioHeaderFooter> headers = const [UptimeLinioHeader(dateTimeProvider: OwnDateTimeProvider()],
+  ...
+})
+
+Output:
+`Linio.log('log'); // 10.000 log`
