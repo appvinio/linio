@@ -44,7 +44,11 @@ class LinioInlineBuilder {
     return this;
   }
 
-  void log(String log) {
-    linio.log(params.join(' '), log);
+  log(dynamic logOrCommand, [dynamic log]) {
+    String options = params.join(' ');
+    if (log != null) {
+      options = logOrCommand;
+    }
+    linio.log(options, log != null ? log : logOrCommand);
   }
 }

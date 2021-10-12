@@ -28,11 +28,11 @@ factory Linio.custom({
 
 #### Simple logs
 
-`Linio.log('some log'); // some log`  
-`Linio.log('some_tag', 'some log'); // some_tag some log`
+`L.log('some log'); // some log`  
+`L.log('some_tag', 'some log'); // some_tag some log`
 
 #### Headers & Footers
-Linio has built in few type header. You can create your own.
+Linio has built in few type header. You can also create your own.
 ##### `TagLinioHeader`
 
 ```  
@@ -44,7 +44,21 @@ factory Linio.custom({
 ```
 
 Output:  
-`Linio.log('TAG', 'log'); // TAG log`
+`L.log('TAG', 'log'); // TAG log`
+
+##### `AvoidFlutterHeader`
+With standard print all of logs have prefix `flutter:`
+With `AvoidFlutterHeader` header this prefix will be removed
+```  
+factory Linio.custom({  
+	... 
+	headers = const [AvoidFlutterHeader()], 
+	...
+})  
+```
+
+Output:  
+`L.log('log'); // log`
 
 ##### `DateTimeLinioHeader`
 
@@ -68,7 +82,7 @@ factory Linio.custom({
 ```
 
 Output:  
-`Linio.log('log'); // 2020-01-01T00:00:00.000 log`
+`L.log('log'); // 2020-01-01T00:00:00.000 log`
 
 
 ##### `UptimeLinioHeader`
@@ -92,4 +106,4 @@ factory Linio.custom({
 ```
 
 Output:  
-`Linio.log('log'); // 10.000 log`
+`L.log('log'); // 10.000 log`

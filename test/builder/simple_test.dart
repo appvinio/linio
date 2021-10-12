@@ -35,11 +35,19 @@ void main(){
 
     final tagHeader = TagLinioHeader();
 
-    test('tag formatter', () {
+    test('tag formatter via tag method', () {
       final console = TestConsole();
       Linio.custom(printers: [console], headers: [tagHeader]);
       LinioInlineBuilder builder = LinioInlineBuilder.b(name: 'main');
       builder.t('TAG').log('test');
+      expect(console.logs, ['TAG test',]);
+    });
+
+    test('tag formatter via logOrCommand', () {
+      final console = TestConsole();
+      Linio.custom(printers: [console], headers: [tagHeader]);
+      LinioInlineBuilder builder = LinioInlineBuilder.b(name: 'main');
+      builder.log('TAG', 'test');
       expect(console.logs, ['TAG test',]);
     });
   });

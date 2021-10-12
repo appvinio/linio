@@ -1,7 +1,6 @@
 import 'package:linio/linio.dart';
 import 'package:test/test.dart';
 
-import '../linio_test.dart';
 import '../mock/mocks.dart';
 
 void main() {

@@ -14,10 +14,10 @@ class ConsolePrinter extends LinioPrinter {
           final element = log[i];
           if (i == log.length - 1) {
             // stdout.write('\r$element');
-            print('\r$element');
+            print('$element');
           } else {
             // stdout.writeln('\r$element');
-            print('\r$element');
+            print('$element');
           }
         }
         if (lastLive.isNotEmpty == true) {
@@ -29,7 +29,7 @@ class ConsolePrinter extends LinioPrinter {
         break;
       case LinioLogType.live:
       // stdout.write('\x1B[1A');
-        final logText = '\r${log.join(' -- ')}';
+        final logText = '${log.join(' -- ')}';
         // stdout.write(logText);
         print(logText);
         lastLive = logText;

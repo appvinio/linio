@@ -1,8 +1,6 @@
 import 'package:linio/linio.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import '../linio_test.dart';
 import '../mock/mocks.dart';
 
 void main() {
@@ -14,7 +12,12 @@ void main() {
       final console = TestConsole();
       Linio linio = Linio.custom(printers: [console], formatters: [testFormatter], headers: [testHeader1]);
       linio.log('test');
-      expect(console.logs, ['===t===','===e===','===s===','===t===',]);
+      expect(console.logs, [
+        '===t===',
+        '===e===',
+        '===s===',
+        '===t===',
+      ]);
     });
   });
 
@@ -25,8 +28,10 @@ void main() {
     test('single formatter', () {
       final console = TestConsole();
       Linio linio = Linio.custom(printers: [console], headers: [levelHeader, tagHeader]);
-      linio.log('-l fatal -t TEST','test');
-      expect(console.logs, ['[FATAL] TEST test',]);
+      linio.log('-l fatal -t TEST', 'test');
+      expect(console.logs, [
+        '[FATAL] TEST test',
+      ]);
     });
   });
 }

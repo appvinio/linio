@@ -1,13 +1,10 @@
 import 'package:linio/linio.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import '../linio_test.dart';
 import '../mock/mocks.dart';
 
 void main() {
   group('tag header', () {
-
     final testHeader1 = TagLinioHeader();
 
     test('single formatter', () {

@@ -107,8 +107,8 @@ class Linio {
     }
 
     final linioLog = log ?? logOrCommand;
-
-    String linioTag = linioCommand['tag'] ?? (log != null ? logOrCommand : '');
+    final tagCandidate = log != null ? (linioCommand.rest.isNotEmpty ? linioCommand.rest.first : '') : '';
+    String linioTag = linioCommand['tag'] ?? (log != null ? tagCandidate : '');
 
     LinioLogType linioLogType = LinioLogType.static;
     switch (linioCommand['mode']) {

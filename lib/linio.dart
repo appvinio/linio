@@ -35,6 +35,8 @@ part 'src/formatters/linio_formatter.dart';
 
 part 'src/formatters/simple_formatter.dart';
 
+part 'src/header_footers/avoid_flutter_header.dart';
+
 part 'src/header_footers/datetime_header.dart';
 
 part 'src/header_footers/level_console_header.dart';

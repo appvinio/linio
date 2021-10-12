@@ -8,7 +8,7 @@ class TerminalPrinter extends LinioPrinter {
   void printLog(ArgResults command, List<String> log, LinioOptions options) {
     log.forEach((element) {
       // stdout.writeln('\r$element');
-     print('\r$element');
+     print('$element');
     });
   }
 }
