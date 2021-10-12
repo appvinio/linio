@@ -6,7 +6,7 @@ Linio is high customisable logger for dart and flutter.
 
 ##### Add  `linio`  to  `pubspec.yaml`
 ```  
- dependencies: linio: ^0.0.2
+ dependencies: linio: ^0.0.3
  
  import 'package:linio/linio.dart';
 ```  
