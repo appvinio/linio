@@ -8,7 +8,7 @@ Linio is high customisable logger for dart and flutter.
 ###### Add to dependencies
 ```yaml
   dependencies: 
-    linio: ^0.0.3
+    linio: ^0.0.4
 ```  
 ###### Init
 ```dart
