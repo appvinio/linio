@@ -1,0 +1,14 @@
+name: linio
+description: Highly composable log library. Add headers, footers, tags. Filter and format logs.
+version: 0.0.5
+homepage: https://github.com/appvinio/linio
+
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+#dependencies:
+
+dev_dependencies:
+  test: any
+  mocktail: 0.1.4
