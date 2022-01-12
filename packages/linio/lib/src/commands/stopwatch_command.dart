@@ -1,22 +1,17 @@
 part of linio;
 
 class StopwatchCommand extends LinioCommand {
-  // The [name] and [description] properties must be defined by every
-  // subclass.
   final name = "stopwatch";
   final description = "Stopwatch";
 
   Map<String, Stopwatch> stopwatches = {};
 
   StopwatchCommand() {
-    // we can add command specific arguments here.
-    // [argParser] is automatically created by the parent class.
     argParser.addOption('start', abbr: 's');
     argParser.addOption('end', abbr: 'e');
     argParser.addOption('loop', abbr: 'l');
   }
 
-  // [run] may also return a Future.
   run() {
     if (argResults != null) {
       if (argResults!.wasParsed('start')) {

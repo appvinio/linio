@@ -1,10 +1,17 @@
 part of linio;
 
+typedef DateTimeHeaderFormatter = String Function(DateTime dateTime);
+
+final _defaultDateTimeFormatter = (DateTime dateTime) => dateTime.toIso8601String();
+
 class DateTimeLinioHeader extends LinioHeaderFooter {
-
   final DateTimeProvider dateTimeProvider;
+  final DateTimeHeaderFormatter formatter;
 
-  DateTimeLinioHeader({this.dateTimeProvider = const DartDateTimeProvider()});
+  DateTimeLinioHeader({
+    this.dateTimeProvider = const DartDateTimeProvider(),
+    DateTimeHeaderFormatter? formatter,
+  }) : this.formatter = formatter ??= _defaultDateTimeFormatter;
 
   @override
   String prepareHeader(ArgResults command, String log, LinioOptions options) {
@@ -17,7 +24,6 @@ abstract class DateTimeProvider {
 }
 
 class DartDateTimeProvider implements DateTimeProvider {
-
   const DartDateTimeProvider();
 
   @override
