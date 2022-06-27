@@ -93,8 +93,6 @@ class Linio {
   late StreamController<Function> streamController;
 
   void log(dynamic logOrCommand, [dynamic log]) {
-    print('RFL DEBUG: $logOrCommand | $log');
-
     final linioCommand = commandRunner.argParser
         .parse((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' '));
     List<String> linioCommandResult;
