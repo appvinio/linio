@@ -1,3 +1,7 @@
+## 0.0.7
+
+* add plugins
+
 ## 0.0.6
 
 * improve stability

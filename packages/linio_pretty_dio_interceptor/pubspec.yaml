@@ -1,6 +1,6 @@
 name: linio_pretty_dio_interceptor
 description: This library is a wrapper for dio_pretty_logger to work with linio
-version: 0.0.6+1
+version: 0.0.6+2
 # homepage: https://www.example.com
 
 environment:
@@ -8,7 +8,6 @@ environment:
 
 dependencies:
   linio: ^0.0.6+1
-  pretty_dio_logger: ^1.1.1
   dio: ^4.0.6
 
 dev_dependencies:

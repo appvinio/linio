@@ -8,6 +8,7 @@ class Linio {
     this.printers = const [],
     this.formatters = const [SimpleLinioFormatter()],
     this.headers = const [],
+    this.plugins = const [],
     this.manipulators = const [],
     this.filters = const [],
   }) {
@@ -32,6 +33,10 @@ class Linio {
 
     manipulators.forEach((manipulator) {
       manipulator.init(this);
+    });
+
+    plugins.forEach((plugin) {
+      plugin.init(this);
     });
   }
 
@@ -85,6 +90,7 @@ class Linio {
   List<LinioHeaderFooter> headers;
   List<LinioCommand> manipulators;
   List<LinioPrinter> printers;
+  List<LinioPlugin> plugins;
   List<LinioFormatter> formatters;
   List<LinioFilter> filters;
   LinioTagManager tagManager = LinioTagManager();
