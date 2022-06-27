@@ -1,3 +1,7 @@
+## 0.0.6
+
+* improve stability
+
 ## 0.0.5
 
 * improve documentation
