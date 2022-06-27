@@ -9,7 +9,7 @@ environment:
 dependencies:
   linio: ^0.0.6+1
   pretty_dio_logger: ^1.1.1
-  dio: 4.0.6
+  dio: ^4.0.6
 
 dev_dependencies:
   pedantic: ^1.11.1
