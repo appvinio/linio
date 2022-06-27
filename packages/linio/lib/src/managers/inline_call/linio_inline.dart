@@ -48,13 +48,19 @@ class LinioInlineBuilder {
     return this;
   }
 
-  logPoint(){
+  logPoint() {
     linio.log('log_point');
   }
 
   log(dynamic logOrCommand, [dynamic log]) {
     String options = params.join(' ');
     options = options.isNotEmpty ? "$options $logOrCommand" : logOrCommand;
-    linio.log(options, log != null ? log : logOrCommand != options ? logOrCommand : null);
+    linio.log(
+        options,
+        log != null
+            ? log
+            : logOrCommand != options
+                ? logOrCommand
+                : null);
   }
 }

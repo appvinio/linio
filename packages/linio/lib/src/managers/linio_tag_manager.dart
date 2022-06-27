@@ -6,14 +6,22 @@ class LinioTagManager {
 
   void allow(String tag) {
     blockList.remove(tag);
-    if (!allowList.contains(tag)) {
+    if (tag == 'all') {
+      allowList.clear();
+      blockList.clear();
+      allowList.add(tag);
+    } else if (!allowList.contains(tag)) {
       allowList.add(tag);
     }
   }
 
   void block(String tag) {
     allowList.remove(tag);
-    if (!blockList.contains(tag)) {
+    if (tag == 'all') {
+      allowList.clear();
+      blockList.clear();
+      blockList.add(tag);
+    } else if (!blockList.contains(tag)) {
       blockList.add(tag);
     }
   }

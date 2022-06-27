@@ -11,14 +11,27 @@ class Linio {
     this.manipulators = const [],
     this.filters = const [],
   }) {
-
     streamController = StreamController<Function>();
     streamController.stream.asyncMap((event) => event()).listen((event) {});
     commandRunner = LinioCommandRunner('linio', 'linio');
     commandRunner.argParser.addOption('tag', abbr: 't');
-    commandRunner.argParser.addOption('mode', abbr: 'm', allowed: ['s', 'l', 'static', 'live'], defaultsTo: 's');
+    commandRunner.argParser.addOption('mode',
+        abbr: 'm', allowed: ['s', 'l', 'static', 'live'], defaultsTo: 's');
     commandRunner.argParser.addOption('level',
-        abbr: 'l', allowed: ['d', 'i', 'w', 'e', 'f', 'debug', 'info', 'warn', 'error', 'fatal'], defaultsTo: 'd');
+        abbr: 'l',
+        allowed: [
+          'd',
+          'i',
+          'w',
+          'e',
+          'f',
+          'debug',
+          'info',
+          'warn',
+          'error',
+          'fatal'
+        ],
+        defaultsTo: 'd');
     manipulators.forEach((element) {
       commandRunner.addCommand(element);
     });
@@ -44,12 +57,12 @@ class Linio {
       List<LinioFilter> filters = const [],
       String name = 'main'}) {
     _instances[name] = Linio._(
-        printers: printers,
-        formatters: formatters,
-        headers: headers,
-        manipulators: manipulators,
-        filters: filters,
-      );
+      printers: printers,
+      formatters: formatters,
+      headers: headers,
+      manipulators: manipulators,
+      filters: filters,
+    );
     return _instances[name]!;
   }
 
@@ -94,12 +107,20 @@ class Linio {
   late StreamController<Function> streamController;
 
   void log(dynamic logOrCommand, [dynamic log]) {
-    final linioCommand = commandRunner.argParser
-        .parse((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' '));
+    print('RFL DEBUG: $logOrCommand | $log');
+
+    final linioCommand = commandRunner.argParser.parse((log != null
+            ? logOrCommand
+            : (logOrCommand is String ? logOrCommand : ''))
+        .toString()
+        .split(' '));
     List<String> linioCommandResult;
     if (linioCommand.command?.name?.isNotEmpty == true) {
-      linioCommandResult = commandRunner
-              .run((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' ')) ??
+      linioCommandResult = commandRunner.run((log != null
+                  ? logOrCommand
+                  : (logOrCommand is String ? logOrCommand : ''))
+              .toString()
+              .split(' ')) ??
           [];
       if (log == null && logOrCommand != null) {
         logOrCommand = null;
@@ -109,7 +130,9 @@ class Linio {
     }
 
     final linioLog = log ?? logOrCommand;
-    final tagCandidate = log != null ? (linioCommand.rest.isNotEmpty ? linioCommand.rest.first : '') : '';
+    final tagCandidate = log != null
+        ? (linioCommand.rest.isNotEmpty ? linioCommand.rest.first : '')
+        : '';
     String linioTag = linioCommand['tag'] ?? (log != null ? tagCandidate : '');
 
     LinioLogType linioLogType = LinioLogType.static;
@@ -146,15 +169,19 @@ class Linio {
         linioLogLevel = LinioLogLevel.fatal;
         break;
     }
-    final options = LinioOptions(linioLogType, linioLogLevel, linioTag, linioLog ?? '', linioCommand);
+    final options = LinioOptions(
+        linioLogType, linioLogLevel, linioTag, linioLog ?? '', linioCommand);
     if (filters.any((element) => !element.shouldLog(options))) {
       return;
     }
     _print(linioCommand, linioCommandResult, linioLog, options);
   }
 
-  void _print(ArgResults command, List<String> commandResult, dynamic log, LinioOptions options) {
-    final formatter = formatters.firstWhere((element) => element.handleLog(log));
-    printers.forEach((printer) => printer.print(command, [...commandResult, ...formatter.format(log)], options));
+  void _print(ArgResults command, List<String> commandResult, dynamic log,
+      LinioOptions options) {
+    final formatter =
+        formatters.firstWhere((element) => element.handleLog(log));
+    printers.forEach((printer) => printer.print(
+        command, [...commandResult, ...formatter.format(log)], options));
   }
 }

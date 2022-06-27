@@ -3,6 +3,10 @@ library linio;
 import 'dart:async';
 import 'dart:io';
 
+export 'package:universal_platform/universal_platform.dart';
+
+import 'package:universal_platform/universal_platform.dart';
+
 import 'args/args.dart';
 import 'args/command_runner.dart';
 

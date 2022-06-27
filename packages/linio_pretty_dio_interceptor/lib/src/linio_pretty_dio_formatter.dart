@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:math' as math;
 
 import 'package:dio/dio.dart';
@@ -52,7 +51,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
 
   @override
   List<String> format(log) {
-    switch(log.runtimeType) {
+    switch (log.runtimeType) {
       case RequestOptions:
         return onRequest(log);
       case Response:
@@ -70,7 +69,8 @@ class LinioPrettyDioFormatter implements LinioFormatter {
       logs.addAll(_printRequestHeader(options));
     }
     if (requestHeader) {
-      logs.addAll(_printMapAsTable(options.queryParameters, header: 'Query Parameters'));
+      logs.addAll(_printMapAsTable(options.queryParameters,
+          header: 'Query Parameters'));
       final requestHeaders = {};
       requestHeaders.addAll(options.headers);
       requestHeaders['contentType'] = options.contentType?.toString();
@@ -79,7 +79,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
       requestHeaders['connectTimeout'] = options.connectTimeout;
       requestHeaders['receiveTimeout'] = options.receiveTimeout;
       logs.addAll(_printMapAsTable(requestHeaders, header: 'Headers'));
-          logs.addAll(_printMapAsTable(options.extra, header: 'Extras'));
+      logs.addAll(_printMapAsTable(options.extra, header: 'Extras'));
     }
     if (requestBody && options.method != 'GET') {
       final data = options.data;
@@ -89,7 +89,8 @@ class LinioPrettyDioFormatter implements LinioFormatter {
           final formDataMap = {}
             ..addEntries(data.fields)
             ..addEntries(data.files);
-          logs.addAll(_printMapAsTable(formDataMap, header: 'Form data | ${data.boundary}'));
+          logs.addAll(_printMapAsTable(formDataMap,
+              header: 'Form data | ${data.boundary}'));
         } else {
           logs.addAll(_printBlock(data.toString()));
         }
@@ -115,7 +116,8 @@ class LinioPrettyDioFormatter implements LinioFormatter {
         logs.add(_printLine('╚'));
         logs.add('');
       } else {
-        logs.addAll(_printBoxed(header: 'DioError ║ ${err.type}', text: err.message));
+        logs.addAll(
+            _printBoxed(header: 'DioError ║ ${err.type}', text: err.message));
       }
     }
     return logs;
@@ -181,7 +183,8 @@ class LinioPrettyDioFormatter implements LinioFormatter {
     final logs = <String>[];
     final uri = options.uri;
     final method = options.method;
-    logs.addAll(_printBoxed(header: 'Request ║ $method ', text: uri.toString()));
+    logs.addAll(
+        _printBoxed(header: 'Request ║ $method ', text: uri.toString()));
     return logs;
   }
 
@@ -273,7 +276,8 @@ class LinioPrettyDioFormatter implements LinioFormatter {
         if (compact && _canFlattenMap(e)) {
           logs.add('║${_indent(tabs)}  $e${!isLast ? ',' : ''}');
         } else {
-          logs.addAll(_printPrettyMap(e, tabs: tabs + 1, isListItem: true, isLast: isLast));
+          logs.addAll(_printPrettyMap(e,
+              tabs: tabs + 1, isListItem: true, isLast: isLast));
         }
       } else {
         logs.add('║${_indent(tabs + 2)} $e${isLast ? '' : ','}');

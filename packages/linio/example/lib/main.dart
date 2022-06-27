@@ -4,9 +4,9 @@ import 'package:linio/linio.dart';
 void main() {
   Linio.custom(
     headers: [
-      // UpTimeLogHeader(),
-      // DateTimeLinioHeader(),
       AvoidFlutterHeader(),
+      // UpTimeLinioHeader(),
+      DateTimeLinioHeader(),
       LevelLinioHeader(),
       TagLinioHeader(),
       LiveLinioHeader(),
@@ -108,6 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Divider(),
           //Grep console
           grepConsole(),
+          Divider(),
+          //Levels
+          levels(),
         ],
       ),
     );
@@ -119,13 +122,13 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         ElevatedButton(
           onPressed: () {
-            L.log('log_point');
+            L.log('-l w log_point');
           },
           child: Text('Log point as L'),
         ),
         ElevatedButton(
           onPressed: () {
-            LC.log('log_point');
+            LC.log('-l w log_point');
           },
           child: Text('Log point as LC'),
         ),
@@ -139,53 +142,59 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    L.log('tag_manager -b all');
-                  },
-                  child: Text('Block all'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    L.log('tag_manager -a all');
-                  },
-                  child: Text('Allow all'),
-                ),
-              ],
+            Expanded(
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      L.log('tag_manager -b all');
+                    },
+                    child: Text('Block all'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      L.log('tag_manager -a all');
+                    },
+                    child: Text('Allow all'),
+                  ),
+                ],
+              ),
             ),
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    L.log('tag_manager -a simple_tag');
-                  },
-                  child: Text('Allow simple_tag'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    L.log('tag_manager -b simple_tag');
-                  },
-                  child: Text('Block simple_tag'),
-                ),
-              ],
+            Expanded(
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      L.log('tag_manager -a simple_tag');
+                    },
+                    child: Text('Allow simple_tag'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      L.log('tag_manager -b simple_tag');
+                    },
+                    child: Text('Block simple_tag'),
+                  ),
+                ],
+              ),
             ),
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    L.log('tag_manager -a compound_tag');
-                  },
-                  child: Text('Allow compound_tag'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    L.log('tag_manager -b compound_tag');
-                  },
-                  child: Text('Block compound_tag'),
-                ),
-              ],
+            Expanded(
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      L.log('tag_manager -a compound_tag');
+                    },
+                    child: Text('Allow compound_tag'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      L.log('tag_manager -b compound_tag');
+                    },
+                    child: Text('Block compound_tag'),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -270,6 +279,44 @@ class _MyHomePageState extends State<MyHomePage> {
         LC.log('simple_tag', 'simple log');
       },
       child: Text('Grep log'),
+    );
+  }
+
+  Widget levels() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            L.d.log('log_point');
+          },
+          child: Text('D'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            L.i.log('log_point');
+          },
+          child: Text('I'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            L.w.log('log_point');
+          },
+          child: Text('W'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            L.e.log('log_point');
+          },
+          child: Text('E'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            L.f.log('log_point');
+          },
+          child: Text('F'),
+        ),
+      ],
     );
   }
 }
