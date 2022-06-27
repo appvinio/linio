@@ -6,9 +6,9 @@ import 'package:test/test.dart';
 
 import '../mock/mocks.dart';
 
-class MockFile extends Mock implements File{}
+class MockFile extends Mock implements File {}
 
-void main(){
+void main() {
   group('formatter test', () {
     final testFormatter = FileLinioFormatter();
     final mockFile = MockFile();

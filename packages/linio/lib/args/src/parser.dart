@@ -34,9 +34,7 @@ class Parser {
   /// The accumulated parsed options.
   final Map<String, dynamic> _results = <String, dynamic>{};
 
-  Parser(this._commandName, this._grammar, this._args,
-      [this._parent, List<String>? rest])
-      : _rest = [...?rest];
+  Parser(this._commandName, this._grammar, this._args, [this._parent, List<String>? rest]) : _rest = [...?rest];
 
   /// The current argument being parsed.
   String get _current => _args.first;
@@ -45,8 +43,7 @@ class Parser {
   ArgResults parse() {
     var arguments = _args.toList();
     if (_grammar.allowsAnything) {
-      return newArgResults(
-          _grammar, const {}, _commandName, null, arguments, arguments);
+      return newArgResults(_grammar, const {}, _commandName, null, arguments, arguments);
     }
 
     ArgResults? commandResults;
@@ -70,8 +67,7 @@ class Parser {
         try {
           commandResults = commandParser.parse();
         } on ArgParserException catch (error) {
-          throw ArgParserException(
-              error.message, [commandName, ...error.commands]);
+          throw ArgParserException(error.message, [commandName, ...error.commands]);
         }
 
         // All remaining arguments were passed to command so clear them here.
@@ -109,8 +105,7 @@ class Parser {
     // Add in the leftover arguments we didn't parse to the innermost command.
     _rest.addAll(_args);
     _args.clear();
-    return newArgResults(
-        _grammar, _results, _commandName, commandResults, _rest, arguments);
+    return newArgResults(_grammar, _results, _commandName, commandResults, _rest, arguments);
   }
 
   /// Pulls the value for [option] from the second argument in [_args].
@@ -170,8 +165,7 @@ class Parser {
 
     // Find where we go from letters/digits to rest.
     var index = 1;
-    while (index < _current.length &&
-        _isLetterOrDigit(_current.codeUnitAt(index))) {
+    while (index < _current.length && _isLetterOrDigit(_current.codeUnitAt(index))) {
       ++index;
     }
     // Must be at least one letter/digit.
@@ -185,16 +179,13 @@ class Parser {
     return _handleAbbreviation(lettersAndDigits, rest, innermostCommand);
   }
 
-  bool _handleAbbreviation(
-      String lettersAndDigits, String rest, Parser innermostCommand) {
+  bool _handleAbbreviation(String lettersAndDigits, String rest, Parser innermostCommand) {
     var c = lettersAndDigits.substring(0, 1);
     var first = _grammar.findByAbbreviation(c);
     if (first == null) {
       // Walk up to the parent command if possible.
-      _validate(
-          _parent != null, 'Could not find an option with short name "-$c".');
-      return _parent!
-          ._handleAbbreviation(lettersAndDigits, rest, innermostCommand);
+      _validate(_parent != null, 'Could not find an option with short name "-$c".');
+      return _parent!._handleAbbreviation(lettersAndDigits, rest, innermostCommand);
     } else if (!first.isFlag) {
       // The first character is a non-flag option, so the rest must be the
       // value.
@@ -226,16 +217,14 @@ class Parser {
     var option = _grammar.findByAbbreviation(c);
     if (option == null) {
       // Walk up to the parent command if possible.
-      _validate(
-          _parent != null, 'Could not find an option with short name "-$c".');
+      _validate(_parent != null, 'Could not find an option with short name "-$c".');
       _parent!._parseShortFlag(c);
       return;
     }
 
     // In a list of short options, only the first can be a non-flag. If
     // we get here we've checked that already.
-    _validate(
-        option.isFlag, 'Option "-$c" must be a flag to be in a collapsed "-".');
+    _validate(option.isFlag, 'Option "-$c" must be a flag to be in a collapsed "-".');
 
     _setFlag(_results, option, true);
   }
@@ -250,8 +239,7 @@ class Parser {
     if (!_current.startsWith('--')) return false;
 
     var index = _current.indexOf('=');
-    var name =
-        index == -1 ? _current.substring(2) : _current.substring(2, index);
+    var name = index == -1 ? _current.substring(2) : _current.substring(2, index);
     for (var i = 0; i != name.length; ++i) {
       if (!_isLetterDigitHyphenOrUnderscore(name.codeUnitAt(i))) return false;
     }
@@ -267,8 +255,7 @@ class Parser {
     if (option != null) {
       _args.removeFirst();
       if (option.isFlag) {
-        _validate(
-            value == null, 'Flag option "$name" should not be given a value.');
+        _validate(value == null, 'Flag option "$name" should not be given a value.');
 
         _setFlag(_results, option, true);
       } else if (value != null) {
@@ -344,8 +331,7 @@ class Parser {
   void _validateAllowed(Option option, String value) {
     if (option.allowed == null) return;
 
-    _validate(option.allowed!.contains(value),
-        '"$value" is not an allowed value for option "${option.name}".');
+    _validate(option.allowed!.contains(value), '"$value" is not an allowed value for option "${option.name}".');
   }
 }
 

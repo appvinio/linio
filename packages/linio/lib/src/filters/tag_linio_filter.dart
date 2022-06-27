@@ -1,7 +1,6 @@
 part of linio;
 
 class TagLinioFilter extends LinioFilter {
-
   late final LinioTagManager manager;
 
   @override

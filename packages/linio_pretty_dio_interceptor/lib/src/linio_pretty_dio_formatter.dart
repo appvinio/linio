@@ -69,12 +69,11 @@ class LinioPrettyDioFormatter implements LinioFormatter {
       logs.addAll(_printRequestHeader(options));
     }
     if (requestHeader) {
-      logs.addAll(_printMapAsTable(options.queryParameters,
-          header: 'Query Parameters'));
+      logs.addAll(_printMapAsTable(options.queryParameters, header: 'Query Parameters'));
       final requestHeaders = {};
       requestHeaders.addAll(options.headers);
       requestHeaders['contentType'] = options.contentType?.toString();
-      requestHeaders['responseType'] = options.responseType?.toString();
+      requestHeaders['responseType'] = options.responseType.toString();
       requestHeaders['followRedirects'] = options.followRedirects;
       requestHeaders['connectTimeout'] = options.connectTimeout;
       requestHeaders['receiveTimeout'] = options.receiveTimeout;
@@ -89,8 +88,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
           final formDataMap = {}
             ..addEntries(data.fields)
             ..addEntries(data.files);
-          logs.addAll(_printMapAsTable(formDataMap,
-              header: 'Form data | ${data.boundary}'));
+          logs.addAll(_printMapAsTable(formDataMap, header: 'Form data | ${data.boundary}'));
         } else {
           logs.addAll(_printBlock(data.toString()));
         }
@@ -106,8 +104,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
       if (err.type == DioErrorType.response) {
         final uri = err.response?.requestOptions.uri;
         logs.addAll(_printBoxed(
-            header:
-                'DioError ║ Status: ${err.response?.statusCode} ${err.response?.statusMessage}',
+            header: 'DioError ║ Status: ${err.response?.statusCode} ${err.response?.statusMessage}',
             text: uri.toString()));
         if (err.response != null && err.response?.data != null) {
           logs.add('╔ ${err.type.toString()}');
@@ -116,8 +113,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
         logs.add(_printLine('╚'));
         logs.add('');
       } else {
-        logs.addAll(
-            _printBoxed(header: 'DioError ║ ${err.type}', text: err.message));
+        logs.addAll(_printBoxed(header: 'DioError ║ ${err.type}', text: err.message));
       }
     }
     return logs;
@@ -128,8 +124,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
     logs.addAll(_printResponseHeader(response));
     if (responseHeader) {
       final responseHeaders = <String, String>{};
-      response.headers
-          .forEach((k, list) => responseHeaders[k] = list.toString());
+      response.headers.forEach((k, list) => responseHeaders[k] = list.toString());
       logs.addAll(_printMapAsTable(responseHeaders, header: 'Headers'));
     }
 
@@ -173,9 +168,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
     final uri = response.requestOptions.uri;
     final method = response.requestOptions.method;
     logs.addAll(_printBoxed(
-        header:
-            'Response ║ $method ║ Status: ${response.statusCode} ${response.statusMessage}',
-        text: uri.toString()));
+        header: 'Response ║ $method ║ Status: ${response.statusCode} ${response.statusMessage}', text: uri.toString()));
     return logs;
   }
 
@@ -183,13 +176,11 @@ class LinioPrettyDioFormatter implements LinioFormatter {
     final logs = <String>[];
     final uri = options.uri;
     final method = options.method;
-    logs.addAll(
-        _printBoxed(header: 'Request ║ $method ', text: uri.toString()));
+    logs.addAll(_printBoxed(header: 'Request ║ $method ', text: uri.toString()));
     return logs;
   }
 
-  String _printLine([String pre = '', String suf = '╝']) =>
-      '$pre${'═' * maxWidth}';
+  String _printLine([String pre = '']) => '$pre${'═' * maxWidth}';
 
   List<String> _printKV(String key, Object v) {
     final logs = <String>[];
@@ -209,19 +200,16 @@ class LinioPrettyDioFormatter implements LinioFormatter {
     final logs = <String>[];
     final lines = (msg.length / maxWidth).ceil();
     for (var i = 0; i < lines; ++i) {
-      logs.add((i >= 0 ? '║ ' : '') +
-          msg.substring(i * maxWidth,
-              math.min<int>(i * maxWidth + maxWidth, msg.length)));
+      logs.add((i >= 0 ? '║ ' : '') + msg.substring(i * maxWidth, math.min<int>(i * maxWidth + maxWidth, msg.length)));
     }
     return logs;
   }
 
   String _indent([int tabCount = initialTab]) => tabStep * tabCount;
 
-  List<String> _printPrettyMap(Map data,
-      {int tabs = initialTab, bool isListItem = false, bool isLast = false}) {
-    List<String> logs = [];
-    final bool isRoot = tabs == initialTab;
+  List<String> _printPrettyMap(Map data, {int tabs = initialTab, bool isListItem = false, bool isLast = false}) {
+    var logs = <String>[];
+    final isRoot = tabs == initialTab;
     final initialIndent = _indent(tabs);
     tabs++;
 
@@ -230,9 +218,9 @@ class LinioPrettyDioFormatter implements LinioFormatter {
     data.keys.toList().asMap().forEach((index, key) {
       final isLast = index == data.length - 1;
       var value = data[key];
-//      key = '\"$key\"';
-      if (value is String)
+      if (value is String) {
         value = '\"${value.toString().replaceAll(RegExp(r'(\r|\n)+'), " ")}\"';
+      }
       if (value is Map) {
         if (compact && _canFlattenMap(value)) {
           logs.add('║${_indent(tabs)} $key: $value${!isLast ? ',' : ''}');
@@ -276,8 +264,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
         if (compact && _canFlattenMap(e)) {
           logs.add('║${_indent(tabs)}  $e${!isLast ? ',' : ''}');
         } else {
-          logs.addAll(_printPrettyMap(e,
-              tabs: tabs + 1, isListItem: true, isLast: isLast));
+          logs.addAll(_printPrettyMap(e, tabs: tabs + 1, isListItem: true, isLast: isLast));
         }
       } else {
         logs.add('║${_indent(tabs + 2)} $e${isLast ? '' : ','}');
@@ -287,8 +274,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
   }
 
   bool _canFlattenMap(Map map) {
-    return map.values.where((val) => val is Map || val is List).isEmpty &&
-        map.toString().length < maxWidth;
+    return map.values.where((val) => val is Map || val is List).isEmpty && map.toString().length < maxWidth;
   }
 
   bool _canFlattenList(List list) {
@@ -297,7 +283,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
 
   List<String> _printMapAsTable(Map map, {required String header}) {
     final logs = <String>[];
-    if (map == null || map.isEmpty) return [];
+    if (map.isEmpty) return [];
     logs.add('╔ $header ');
     map.forEach((key, value) => logs.addAll(_printKV(key, value)));
     logs.add(_printLine('╚'));

@@ -12,8 +12,7 @@ class HelpCommand<T> extends Command<T> {
   final name = 'help';
 
   @override
-  String get description =>
-      'Display help information for ${runner!.executableName}.';
+  String get description => 'Display help information for ${runner!.executableName}.';
 
   @override
   String get invocation => '${runner!.executableName} help [command]';
@@ -37,8 +36,7 @@ class HelpCommand<T> extends Command<T> {
 
     for (var name in argResults!.rest) {
       if (commands.isEmpty) {
-        command!.usageException(
-            'Command "$commandString" does not expect a subcommand.');
+        command!.usageException('Command "$commandString" does not expect a subcommand.');
       }
 
       if (commands[name] == null) {
@@ -46,8 +44,7 @@ class HelpCommand<T> extends Command<T> {
           runner!.usageException('Could not find a command named "$name".');
         }
 
-        command.usageException(
-            'Could not find a subcommand named "$name" for "$commandString".');
+        command.usageException('Could not find a subcommand named "$name" for "$commandString".');
       }
 
       command = commands[name];

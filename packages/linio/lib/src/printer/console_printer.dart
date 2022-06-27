@@ -1,8 +1,7 @@
 part of linio;
 
 class ConsolePrinter extends LinioPrinter {
-  ConsolePrinter({List<LinioHeaderFooter> headers = const []})
-      : super(headers: headers);
+  ConsolePrinter({List<LinioHeaderFooter> headers = const []}) : super(headers: headers);
 
   String lastLive = '';
 
@@ -28,7 +27,7 @@ class ConsolePrinter extends LinioPrinter {
         }
         break;
       case LinioLogType.live:
-      // stdout.write('\x1B[1A');
+        // stdout.write('\x1B[1A');
         final logText = '${log.join(' -- ')}';
         // stdout.write(logText);
         print(logText);

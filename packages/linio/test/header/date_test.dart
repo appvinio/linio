@@ -7,7 +7,6 @@ import '../mock/mocks.dart';
 
 void main() {
   group('date header', () {
-
     final dateTimeProvider = MockDateTimeProvider();
     final testHeader1 = DateTimeLinioHeader(dateTimeProvider: dateTimeProvider);
 
@@ -16,7 +15,9 @@ void main() {
       final console = TestConsole();
       Linio linio = Linio.custom(printers: [console], headers: [testHeader1]);
       linio.log('test');
-      expect(console.logs, ['2020-01-01T00:00:00.000 test',]);
+      expect(console.logs, [
+        '2020-01-01T00:00:00.000 test',
+      ]);
     });
   });
 }

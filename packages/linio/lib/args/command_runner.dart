@@ -51,14 +51,11 @@ class CommandRunner<T> {
   String get _usageWithoutDescription {
     var usagePrefix = 'Usage:';
     var buffer = StringBuffer();
-    buffer.writeln(
-        '$usagePrefix ${_wrap(invocation, hangingIndent: usagePrefix.length)}\n');
+    buffer.writeln('$usagePrefix ${_wrap(invocation, hangingIndent: usagePrefix.length)}\n');
     buffer.writeln(_wrap('Global options:'));
     buffer.writeln('${argParser.usage}\n');
-    buffer.writeln(
-        '${_getCommandUsage(_commands, lineLength: argParser.usageLineLength)}\n');
-    buffer.write(_wrap(
-        'Run "$executableName help <command>" for more information about a command.'));
+    buffer.writeln('${_getCommandUsage(_commands, lineLength: argParser.usageLineLength)}\n');
+    buffer.write(_wrap('Run "$executableName help <command>" for more information about a command.'));
     if (usageFooter != null) {
       buffer.write('\n${_wrap(usageFooter!)}');
     }
@@ -79,8 +76,7 @@ class CommandRunner<T> {
 
   CommandRunner(this.executableName, this.description, {int? usageLineLength})
       : _argParser = ArgParser(usageLineLength: usageLineLength) {
-    argParser.addFlag('help',
-        abbr: 'h', negatable: false, help: 'Print this usage information.');
+    argParser.addFlag('help', abbr: 'h', negatable: false, help: 'Print this usage information.');
     addCommand(HelpCommand<T>());
   }
 
@@ -91,8 +87,7 @@ class CommandRunner<T> {
   void printUsage() => print(usage);
 
   /// Throws a [UsageException] with [message].
-  Never usageException(String message) =>
-      throw UsageException(message, _usageWithoutDescription);
+  Never usageException(String message) => throw UsageException(message, _usageWithoutDescription);
 
   /// Adds [Command] as a top-level command to this runner.
   void addCommand(Command<T> command) {
@@ -158,8 +153,7 @@ class CommandRunner<T> {
           command.usageException('Missing subcommand for "$commandString".');
         } else {
           if (command == null) {
-            usageException(
-                'Could not find a command named "${argResults.rest[0]}".');
+            usageException('Could not find a command named "${argResults.rest[0]}".');
           }
 
           command.usageException('Could not find a subcommand named '
@@ -188,15 +182,14 @@ class CommandRunner<T> {
 
     // Make sure there aren't unexpected arguments.
     if (!command!.takesArguments && argResults.rest.isNotEmpty) {
-      command.usageException(
-          'Command "${argResults.name}" does not take any arguments.');
+      command.usageException('Command "${argResults.name}" does not take any arguments.');
     }
 
     return (command.run()) as T?;
   }
 
-  String _wrap(String text, {int? hangingIndent}) => wrapText(text,
-      length: argParser.usageLineLength, hangingIndent: hangingIndent);
+  String _wrap(String text, {int? hangingIndent}) =>
+      wrapText(text, length: argParser.usageLineLength, hangingIndent: hangingIndent);
 }
 
 /// A single command.
@@ -230,9 +223,7 @@ abstract class Command<T> {
     parents.add(runner!.executableName);
 
     var invocation = parents.reversed.join(' ');
-    return _subcommands.isNotEmpty
-        ? '$invocation <subcommand> [arguments]'
-        : '$invocation [arguments]';
+    return _subcommands.isNotEmpty ? '$invocation <subcommand> [arguments]' : '$invocation [arguments]';
   }
 
   /// The command's parent command, if this is a subcommand.
@@ -290,8 +281,7 @@ abstract class Command<T> {
   String? get usageFooter => null;
 
   String _wrap(String text, {int? hangingIndent}) {
-    return wrapText(text,
-        length: argParser.usageLineLength, hangingIndent: hangingIndent);
+    return wrapText(text, length: argParser.usageLineLength, hangingIndent: hangingIndent);
   }
 
   /// Returns [usage] with [description] removed from the beginning.
@@ -299,8 +289,7 @@ abstract class Command<T> {
     var length = argParser.usageLineLength;
     var usagePrefix = 'Usage: ';
     var buffer = StringBuffer()
-      ..writeln(
-          usagePrefix + _wrap(invocation, hangingIndent: usagePrefix.length))
+      ..writeln(usagePrefix + _wrap(invocation, hangingIndent: usagePrefix.length))
       ..writeln(argParser.usage);
 
     if (_subcommands.isNotEmpty) {
@@ -313,8 +302,7 @@ abstract class Command<T> {
     }
 
     buffer.writeln();
-    buffer.write(
-        _wrap('Run "${runner!.executableName} help" to see global options.'));
+    buffer.write(_wrap('Run "${runner!.executableName} help" to see global options.'));
 
     if (usageFooter != null) {
       buffer.writeln();
@@ -363,8 +351,7 @@ abstract class Command<T> {
 
   Command() {
     if (!argParser.allowsAnything) {
-      argParser.addFlag('help',
-          abbr: 'h', negatable: false, help: 'Print this usage information.');
+      argParser.addFlag('help', abbr: 'h', negatable: false, help: 'Print this usage information.');
     }
   }
 
@@ -393,19 +380,16 @@ abstract class Command<T> {
   void printUsage() => print(usage);
 
   /// Throws a [UsageException] with [message].
-  Never usageException(String message) =>
-      throw UsageException(_wrap(message), _usageWithoutDescription);
+  Never usageException(String message) => throw UsageException(_wrap(message), _usageWithoutDescription);
 }
 
 /// Returns a string representation of [commands] fit for use in a usage string.
 ///
 /// [isSubcommand] indicates whether the commands should be called "commands" or
 /// "subcommands".
-String _getCommandUsage(Map<String, Command> commands,
-    {bool isSubcommand = false, int? lineLength}) {
+String _getCommandUsage(Map<String, Command> commands, {bool isSubcommand = false, int? lineLength}) {
   // Don't include aliases.
-  var names =
-      commands.keys.where((name) => !commands[name]!.aliases.contains(name));
+  var names = commands.keys.where((name) => !commands[name]!.aliases.contains(name));
 
   // Filter out hidden ones, unless they are all hidden.
   var visible = names.where((name) => !commands[name]!.hidden);
@@ -418,8 +402,7 @@ String _getCommandUsage(Map<String, Command> commands,
   var buffer = StringBuffer('Available ${isSubcommand ? "sub" : ""}commands:');
   var columnStart = length + 5;
   for (var name in names) {
-    var lines = wrapTextAsLines(commands[name]!.summary,
-        start: columnStart, length: lineLength);
+    var lines = wrapTextAsLines(commands[name]!.summary, start: columnStart, length: lineLength);
     buffer.writeln();
     buffer.write('  ${padRight(name, length)}   ${lines.first}');
 

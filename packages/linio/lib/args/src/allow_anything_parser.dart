@@ -24,8 +24,7 @@ class AllowAnythingParser implements ArgParser {
 
   @override
   ArgParser addCommand(String name, [ArgParser? parser]) {
-    throw UnsupportedError(
-        "ArgParser.allowAnything().addCommands() isn't supported.");
+    throw UnsupportedError("ArgParser.allowAnything().addCommands() isn't supported.");
   }
 
   @override
@@ -37,8 +36,7 @@ class AllowAnythingParser implements ArgParser {
       void Function(bool)? callback,
       bool hide = false,
       List<String> aliases = const []}) {
-    throw UnsupportedError(
-        "ArgParser.allowAnything().addFlag() isn't supported.");
+    throw UnsupportedError("ArgParser.allowAnything().addFlag() isn't supported.");
   }
 
   @override
@@ -55,8 +53,7 @@ class AllowAnythingParser implements ArgParser {
       bool mandatory = false,
       bool hide = false,
       List<String> aliases = const []}) {
-    throw UnsupportedError(
-        "ArgParser.allowAnything().addOption() isn't supported.");
+    throw UnsupportedError("ArgParser.allowAnything().addOption() isn't supported.");
   }
 
   @override
@@ -71,19 +68,16 @@ class AllowAnythingParser implements ArgParser {
       bool splitCommas = true,
       bool hide = false,
       List<String> aliases = const []}) {
-    throw UnsupportedError(
-        "ArgParser.allowAnything().addMultiOption() isn't supported.");
+    throw UnsupportedError("ArgParser.allowAnything().addMultiOption() isn't supported.");
   }
 
   @override
   void addSeparator(String text) {
-    throw UnsupportedError(
-        "ArgParser.allowAnything().addSeparator() isn't supported.");
+    throw UnsupportedError("ArgParser.allowAnything().addSeparator() isn't supported.");
   }
 
   @override
-  ArgResults parse(Iterable<String> args) =>
-      Parser(null, this, Queue.of(args)).parse();
+  ArgResults parse(Iterable<String> args) => Parser(null, this, Queue.of(args)).parse();
 
   @override
   String get usage => '';

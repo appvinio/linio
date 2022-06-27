@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:linio/linio.dart';
 
-class PrettyDioLoggerInterceptor extends Interceptor with LinioPlugin  {
-
+class PrettyDioLoggerInterceptor extends Interceptor with LinioPlugin {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     linio.log(options);

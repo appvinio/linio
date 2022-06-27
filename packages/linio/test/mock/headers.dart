@@ -1,7 +1,6 @@
 import 'package:linio/linio.dart';
 
 class TestHeader extends LinioHeaderFooter {
-
   TestHeader(this.headerFooter);
 
   final String headerFooter;

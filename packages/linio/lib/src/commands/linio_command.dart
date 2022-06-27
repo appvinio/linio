@@ -1,8 +1,6 @@
 part of linio;
 
-abstract class LinioCommand extends Command<List<String>>
-    implements Initiable {
-
+abstract class LinioCommand extends Command<List<String>> implements Initiable {
   late final Linio linio;
 
   @override
@@ -10,4 +8,3 @@ abstract class LinioCommand extends Command<List<String>>
     linio = instance;
   }
 }
-

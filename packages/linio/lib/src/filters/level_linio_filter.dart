@@ -1,7 +1,6 @@
 part of linio;
 
 class LevelLinioFilter extends LinioFilter {
-
   late final LinioLevelManager manager;
   @override
   bool shouldLog(LinioOptions options) {

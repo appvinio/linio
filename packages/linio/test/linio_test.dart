@@ -17,7 +17,7 @@ import 'integration/integration_test.dart' as integration_integration_test;
 import 'tag/tag_manager_test.dart' as tag_tag_manager_test;
 import 'log_point/simple_test.dart' as log_point_test;
 
-class MockDateTimeProvider extends Mock implements DartDateTimeProvider{}
+class MockDateTimeProvider extends Mock implements DartDateTimeProvider {}
 
 void main() {
   group('simple test', () {

@@ -9,14 +9,9 @@ abstract class LinioPrinter {
 
   void print(ArgResults command, List<String> log, LinioOptions options) {
     final logToPrint = log
-        .fold(
-        <String>[],
-            (List<String> previousValue, String element) =>
-        previousValue..addAll(element.split('\n')))
-        .map((line) => headers.reversed.fold(
-        line,
-            (String previousValue, element) =>
-            element.prepareHeader(command, previousValue, options)))
+        .fold(<String>[], (List<String> previousValue, String element) => previousValue..addAll(element.split('\n')))
+        .map((line) => headers.reversed
+            .fold(line, (String previousValue, element) => element.prepareHeader(command, previousValue, options)))
         .toList();
     printLog(command, logToPrint, options);
   }

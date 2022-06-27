@@ -10,13 +10,8 @@ import 'arg_parser.dart';
 ///
 /// Since [ArgResults] doesn't have a public constructor, this lets [ArgParser]
 /// get to it. This function isn't exported to the public API of the package.
-ArgResults newArgResults(
-    ArgParser parser,
-    Map<String, dynamic> parsed,
-    String? name,
-    ArgResults? command,
-    List<String> rest,
-    List<String> arguments) {
+ArgResults newArgResults(ArgParser parser, Map<String, dynamic> parsed, String? name, ArgResults? command,
+    List<String> rest, List<String> arguments) {
   return ArgResults._(parser, parsed, name, command, rest, arguments);
 }
 
@@ -52,8 +47,7 @@ class ArgResults {
   /// The original arguments that were parsed.
   final List<String> arguments;
 
-  ArgResults._(this._parser, this._parsed, this.name, this.command,
-      List<String> rest, List<String> arguments)
+  ArgResults._(this._parser, this._parsed, this.name, this.command, List<String> rest, List<String> arguments)
       : rest = UnmodifiableListView(rest),
         arguments = UnmodifiableListView(arguments);
 

@@ -6,28 +6,11 @@
 ///
 /// Since [Option] doesn't have a public constructor, this lets `ArgParser`
 /// get to it. This function isn't exported to the public API of the package.
-Option newOption(
-    String name,
-    String? abbr,
-    String? help,
-    String? valueHelp,
-    Iterable<String>? allowed,
-    Map<String, String>? allowedHelp,
-    defaultsTo,
-    Function? callback,
-    OptionType type,
-    {bool? negatable,
-    bool? splitCommas,
-    bool mandatory = false,
-    bool hide = false,
-    List<String> aliases = const []}) {
-  return Option._(name, abbr, help, valueHelp, allowed, allowedHelp, defaultsTo,
-      callback, type,
-      negatable: negatable,
-      splitCommas: splitCommas,
-      mandatory: mandatory,
-      hide: hide,
-      aliases: aliases);
+Option newOption(String name, String? abbr, String? help, String? valueHelp, Iterable<String>? allowed,
+    Map<String, String>? allowedHelp, defaultsTo, Function? callback, OptionType type,
+    {bool? negatable, bool? splitCommas, bool mandatory = false, bool hide = false, List<String> aliases = const []}) {
+  return Option._(name, abbr, help, valueHelp, allowed, allowedHelp, defaultsTo, callback, type,
+      negatable: negatable, splitCommas: splitCommas, mandatory: mandatory, hide: hide, aliases: aliases);
 }
 
 /// A command-line option.
@@ -94,24 +77,11 @@ class Option {
   /// Whether the option allows multiple values.
   bool get isMultiple => type == OptionType.multiple;
 
-  Option._(
-      this.name,
-      this.abbr,
-      this.help,
-      this.valueHelp,
-      Iterable<String>? allowed,
-      Map<String, String>? allowedHelp,
-      this.defaultsTo,
-      this.callback,
-      OptionType type,
-      {this.negatable,
-      bool? splitCommas,
-      this.mandatory = false,
-      this.hide = false,
-      this.aliases = const []})
+  Option._(this.name, this.abbr, this.help, this.valueHelp, Iterable<String>? allowed, Map<String, String>? allowedHelp,
+      this.defaultsTo, this.callback, OptionType type,
+      {this.negatable, bool? splitCommas, this.mandatory = false, this.hide = false, this.aliases = const []})
       : allowed = allowed == null ? null : List.unmodifiable(allowed),
-        allowedHelp =
-            allowedHelp == null ? null : Map.unmodifiable(allowedHelp),
+        allowedHelp = allowedHelp == null ? null : Map.unmodifiable(allowedHelp),
         type = type,
         // If the user doesn't specify [splitCommas], it defaults to true for
         // multiple options.

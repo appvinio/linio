@@ -15,11 +15,8 @@ class StopwatchCommand extends LinioCommand {
   run() {
     if (argResults != null) {
       if (argResults!.wasParsed('start')) {
-        stopwatches.update(argResults!['start'], (value) => Stopwatch(),
-            ifAbsent: () => Stopwatch());
-        stopwatches.update(
-            '${argResults!['start']}loop', (value) => Stopwatch(),
-            ifAbsent: () => Stopwatch());
+        stopwatches.update(argResults!['start'], (value) => Stopwatch(), ifAbsent: () => Stopwatch());
+        stopwatches.update('${argResults!['start']}loop', (value) => Stopwatch(), ifAbsent: () => Stopwatch());
         stopwatches[argResults!['start']]!.start();
         stopwatches['${argResults!['start']}loop']!.start();
         return ['Stopwatch started [${argResults!['start']}]'];

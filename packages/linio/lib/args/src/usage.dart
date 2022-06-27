@@ -106,8 +106,7 @@ class _Usage {
       }
     } else if (option.isMultiple) {
       if (option.defaultsTo != null && option.defaultsTo.isNotEmpty) {
-        var defaults =
-            (option.defaultsTo as List).map((value) => '"$value"').join(', ');
+        var defaults = (option.defaultsTo as List).map((value) => '"$value"').join(', ');
         _write(2, '(defaults to $defaults)');
       }
     } else if (option.defaultsTo != null) {
@@ -115,8 +114,7 @@ class _Usage {
     }
   }
 
-  String _abbreviation(Option option) =>
-      option.abbr == null ? '' : '-${option.abbr}, ';
+  String _abbreviation(Option option) => option.abbr == null ? '' : '-${option.abbr}, ';
 
   String _longOption(Option option) {
     String result;
@@ -136,9 +134,7 @@ class _Usage {
   }
 
   String _allowedTitle(Option option, String allowed) {
-    var isDefault = option.defaultsTo is List
-        ? option.defaultsTo.contains(allowed)
-        : option.defaultsTo == allowed;
+    var isDefault = option.defaultsTo is List ? option.defaultsTo.contains(allowed) : option.defaultsTo == allowed;
     return '      [$allowed]' + (isDefault ? ' (default)' : '');
   }
 
@@ -153,8 +149,7 @@ class _Usage {
       abbr = math.max(abbr, _abbreviation(option).length);
 
       // Make room for the option.
-      title = math.max(
-          title, _longOption(option).length + _mandatoryOption(option).length);
+      title = math.max(title, _longOption(option).length + _mandatoryOption(option).length);
 
       // Make room for the allowed help.
       if (option.allowedHelp != null) {
@@ -178,11 +173,9 @@ class _Usage {
     var lines = text.split('\n');
     // If we are writing the last column, word wrap it to fit.
     if (column == _columnWidths.length && lineLength != null) {
-      var start =
-          _columnWidths.take(column).reduce((start, width) => start + width);
+      var start = _columnWidths.take(column).reduce((start, width) => start + width);
       lines = [
-        for (var line in lines)
-          ...wrapTextAsLines(line, start: start, length: lineLength),
+        for (var line in lines) ...wrapTextAsLines(line, start: start, length: lineLength),
       ];
     }
 
@@ -233,9 +226,7 @@ class _Usage {
   }
 
   String _buildAllowedList(Option option) {
-    var isDefault = option.defaultsTo is List
-        ? option.defaultsTo.contains
-        : (value) => value == option.defaultsTo;
+    var isDefault = option.defaultsTo is List ? option.defaultsTo.contains : (value) => value == option.defaultsTo;
 
     var allowedBuffer = StringBuffer();
     allowedBuffer.write('[');

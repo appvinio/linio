@@ -57,8 +57,7 @@ class ArgParser {
   /// an option nor a command.
   factory ArgParser({bool allowTrailingOptions = true, int? usageLineLength}) =>
       ArgParser._(<String, Option>{}, <String, ArgParser>{}, <String, String>{},
-          allowTrailingOptions: allowTrailingOptions,
-          usageLineLength: usageLineLength);
+          allowTrailingOptions: allowTrailingOptions, usageLineLength: usageLineLength);
 
   /// Creates a new ArgParser that treats *all input* as non-option arguments.
   ///
@@ -68,8 +67,7 @@ class ArgParser {
   /// Options may not be defined for this parser.
   factory ArgParser.allowAnything() = AllowAnythingParser;
 
-  ArgParser._(Map<String, Option> options, Map<String, ArgParser> commands,
-      this._aliases,
+  ArgParser._(Map<String, Option> options, Map<String, ArgParser> commands, this._aliases,
       {bool allowTrailingOptions = true, this.usageLineLength})
       : _options = options,
         options = UnmodifiableMapView(options),
@@ -135,19 +133,9 @@ class ArgParser {
       void Function(bool)? callback,
       bool hide = false,
       List<String> aliases = const []}) {
-    _addOption(
-        name,
-        abbr,
-        help,
-        null,
-        null,
-        null,
-        defaultsTo,
-        callback == null ? null : (value) => callback(value as bool),
-        OptionType.flag,
-        negatable: negatable,
-        hide: hide,
-        aliases: aliases);
+    _addOption(name, abbr, help, null, null, null, defaultsTo,
+        callback == null ? null : (value) => callback(value as bool), OptionType.flag,
+        negatable: negatable, hide: hide, aliases: aliases);
   }
 
   /// Defines an option that takes a value.
@@ -201,8 +189,7 @@ class ArgParser {
       bool mandatory = false,
       bool hide = false,
       List<String> aliases = const []}) {
-    _addOption(name, abbr, help, valueHelp, allowed, allowedHelp, defaultsTo,
-        callback, OptionType.single,
+    _addOption(name, abbr, help, valueHelp, allowed, allowedHelp, defaultsTo, callback, OptionType.single,
         mandatory: mandatory, hide: hide, aliases: aliases);
   }
 
@@ -257,31 +244,13 @@ class ArgParser {
       bool splitCommas = true,
       bool hide = false,
       List<String> aliases = const []}) {
-    _addOption(
-        name,
-        abbr,
-        help,
-        valueHelp,
-        allowed,
-        allowedHelp,
-        defaultsTo?.toList() ?? <String>[],
-        callback == null ? null : (value) => callback(value as List<String>),
-        OptionType.multiple,
-        splitCommas: splitCommas,
-        hide: hide,
-        aliases: aliases);
+    _addOption(name, abbr, help, valueHelp, allowed, allowedHelp, defaultsTo?.toList() ?? <String>[],
+        callback == null ? null : (value) => callback(value as List<String>), OptionType.multiple,
+        splitCommas: splitCommas, hide: hide, aliases: aliases);
   }
 
-  void _addOption(
-      String name,
-      String? abbr,
-      String? help,
-      String? valueHelp,
-      Iterable<String>? allowed,
-      Map<String, String>? allowedHelp,
-      defaultsTo,
-      Function? callback,
-      OptionType type,
+  void _addOption(String name, String? abbr, String? help, String? valueHelp, Iterable<String>? allowed,
+      Map<String, String>? allowedHelp, defaultsTo, Function? callback, OptionType type,
       {bool negatable = false,
       bool? splitCommas,
       bool mandatory = false,
@@ -296,24 +265,17 @@ class ArgParser {
     if (abbr != null) {
       var existing = findByAbbreviation(abbr);
       if (existing != null) {
-        throw ArgumentError(
-            'Abbreviation "$abbr" is already used by "${existing.name}".');
+        throw ArgumentError('Abbreviation "$abbr" is already used by "${existing.name}".');
       }
     }
 
     // Make sure the option is not mandatory with a default value.
     if (mandatory && defaultsTo != null) {
-      throw ArgumentError(
-          'The option $name cannot be mandatory and have a default value.');
+      throw ArgumentError('The option $name cannot be mandatory and have a default value.');
     }
 
-    var option = newOption(name, abbr, help, valueHelp, allowed, allowedHelp,
-        defaultsTo, callback, type,
-        negatable: negatable,
-        splitCommas: splitCommas,
-        mandatory: mandatory,
-        hide: hide,
-        aliases: aliases);
+    var option = newOption(name, abbr, help, valueHelp, allowed, allowedHelp, defaultsTo, callback, type,
+        negatable: negatable, splitCommas: splitCommas, mandatory: mandatory, hide: hide, aliases: aliases);
     _options[name] = option;
     _optionsAndSeparators.add(option);
     for (var alias in aliases) {
@@ -331,8 +293,7 @@ class ArgParser {
 
   /// Parses [args], a list of command-line arguments, matches them against the
   /// flags and options defined by this parser, and returns the result.
-  ArgResults parse(Iterable<String> args) =>
-      Parser(null, this, Queue.of(args)).parse();
+  ArgResults parse(Iterable<String> args) => Parser(null, this, Queue.of(args)).parse();
 
   /// Generates a string displaying usage information for the defined options.
   ///

@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 import '../mock/mocks.dart';
 
-void main(){
+void main() {
   group('formatter test', () {
     test('single formatter', () {
       final console = TestConsole();
