@@ -1,7 +1,7 @@
 part of linio;
 
-abstract class LinioFormatter {
-  List<String> format(dynamic log);
+abstract class LinioFormatter<T> {
+  List<String> format(T log);
 
-  bool handleLog(dynamic log);
+  bool handleLog(T log);
 }
