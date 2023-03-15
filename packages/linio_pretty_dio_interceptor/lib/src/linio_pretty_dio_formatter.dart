@@ -101,7 +101,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
   List<String> onError(DioError err) {
     final logs = <String>[];
     if (error) {
-      if (err.type == DioErrorType.response) {
+      if (err.type == DioErrorType.badResponse) {
         final uri = err.response?.requestOptions.uri;
         logs.addAll(_printBoxed(
             header: 'DioError ║ Status: ${err.response?.statusCode} ${err.response?.statusMessage}',
@@ -113,7 +113,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
         logs.add(_printLine('╚'));
         logs.add('');
       } else {
-        logs.addAll(_printBoxed(header: 'DioError ║ ${err.type}', text: err.message));
+        logs.addAll(_printBoxed(header: 'DioError ║ ${err.type}', text: err.response?.statusMessage ?? ''));
       }
     }
     return logs;
