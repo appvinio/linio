@@ -13,10 +13,10 @@ void main() {
       Linio linio = Linio.custom(printers: [console], filters: [TagLinioFilter()], headers: [testHeader1]);
       final tagManager = linio.tagManager;
       tagManager.allow('all');
-      linio.log('TAG1', 'test');
-      linio.log('TAG2', 'test');
-      linio.log('TAG3', 'test');
-      linio.log('TAG4', 'test');
+      linio.log('test', tag: 'TAG1');
+      linio.log('test', tag: 'TAG2');
+      linio.log('test', tag: 'TAG3');
+      linio.log('test', tag: 'TAG4');
       expect(console.logs, ['TAG1 test','TAG2 test','TAG3 test','TAG4 test']);
     });
 
@@ -26,10 +26,10 @@ void main() {
       final tagManager = linio.tagManager;
       tagManager.allow('all');
       tagManager.block('TAG1');
-      linio.log('TAG1', 'test');
-      linio.log('TAG2', 'test');
-      linio.log('TAG3', 'test');
-      linio.log('TAG4', 'test');
+      linio.log('test', tag: 'TAG1');
+      linio.log('test', tag: 'TAG2');
+      linio.log('test', tag: 'TAG3');
+      linio.log('test', tag: 'TAG4');
       expect(console.logs, ['TAG2 test','TAG3 test','TAG4 test']);
     });
 
@@ -38,10 +38,10 @@ void main() {
       Linio linio = Linio.custom(printers: [console], filters: [TagLinioFilter()], headers: [testHeader1]);
       final tagManager = linio.tagManager;
       tagManager.block('all');
-      linio.log('TAG1', 'test');
-      linio.log('TAG2', 'test');
-      linio.log('TAG3', 'test');
-      linio.log('TAG4', 'test');
+      linio.log('test', tag: 'TAG1');
+      linio.log('test', tag: 'TAG2');
+      linio.log('test', tag: 'TAG3');
+      linio.log('test', tag: 'TAG4');
       expect(console.logs, []);
     });
 
@@ -51,10 +51,10 @@ void main() {
       final tagManager = linio.tagManager;
       tagManager.block('all');
       tagManager.allow('TAG1');
-      linio.log('TAG1', 'test');
-      linio.log('TAG2', 'test');
-      linio.log('TAG3', 'test');
-      linio.log('TAG4', 'test');
+      linio.log('test', tag: 'TAG1');
+      linio.log('test', tag: 'TAG2');
+      linio.log('test', tag: 'TAG3');
+      linio.log('test', tag: 'TAG4');
       expect(console.logs, ['TAG1 test']);
     });
   });

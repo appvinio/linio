@@ -4,174 +4,43 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="181b2fbc-6921-4695-bac0-186b53567e47" name="Default Changelist" comment="add author and proper home">
-      <change afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/example_lib_main_dart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/.idea/runConfigurations/example_lib_main_dart.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/appvinio/linio/LinioPlugin.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.metadata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/kotlin/com/appvinio/linio_example/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/values-night/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/src/profile/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/Debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/Release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Base.lproj/LaunchScreen.storyboard" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Runner-Bridging-Header.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/test/widget_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/LinioPlugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/LinioPlugin.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftLinioPlugin.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/linio.podspec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/args.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/command_runner.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/allow_anything_parser.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/arg_parser.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/arg_parser_exception.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/arg_results.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/help_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/option.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/parser.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/usage.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/usage_exception.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/args/src/utils.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/linio.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/empty_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/level_manager_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/linio_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/linio_command_runner.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/log_point_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/stopwatch_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/commands/tag_manager_command.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/filters/level_linio_filter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/filters/linio_filter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/filters/tag_linio_filter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/formatters/file_formatter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/formatters/linio_formatter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/formatters/simple_formatter.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/avoid_flutter_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/datetime_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/level_console_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/linio_header_footer.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/live_linio_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/tag_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/header_footers/uptime_header.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/instance/linio.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/managers/inline_call/linio_inline.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/managers/inline_call/linio_level_inline.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/managers/linio_level_manager.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/managers/linio_tag_manager.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/manipulators/linio_manipulator.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/options/linio_log_level.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/options/linio_log_type.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/options/linio_options.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/printer/console_printer.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/printer/linio_printer.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/printer/terminal_printer.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/shared/initiable.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/builder/simple_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/filter/level_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/filter/tag_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/formatter/file_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/formatter/simple_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/header/date_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/header/level_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/header/simple_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/header/tag_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/header/uptime_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/integration_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/linio_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mock/formatters.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mock/headers.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mock/mocks.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mock/printers.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tag/tag_manager_test.dart" beforeDir="false" />
+    <list default="true" id="181b2fbc-6921-4695-bac0-186b53567e47" name="Default Changelist" comment="redesign">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/.metadata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/example/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/example/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/example/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/example/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/lib/src/commands/empty_command.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/lib/src/commands/empty_command.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/lib/src/instance/linio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/lib/src/instance/linio.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/lib/src/managers/inline_call/linio_inline.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/lib/src/managers/inline_call/linio_inline.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/lib/src/options/linio_options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/lib/src/options/linio_options.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/lib/src/printer/console_printer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/lib/src/printer/console_printer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/lib/src/printer/terminal_printer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/lib/src/printer/terminal_printer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/builder/simple_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/builder/simple_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/filter/level_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/filter/level_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/filter/tag_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/filter/tag_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/header/level_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/header/level_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/header/tag_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/header/tag_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/integration/integration_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/integration/integration_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/log_point/simple_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/log_point/simple_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio/test/tag/tag_manager_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio/test/tag/tag_manager_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/lib/src/linio_pretty_dio_formatter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/lib/src/linio_pretty_dio_formatter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/packages/linio_pretty_dio_interceptor/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/rafaldziuryk/.android/avd/Pixel_2_API_30.avd]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -180,6 +49,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
@@ -191,21 +65,28 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1w3QP2Gsyr285Ssi1wenVNcT7uS" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/header_footers" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/rafaldziuryk/AndroidStudioProjects/linio",
+    "settings.editor.selected.configurable": "dart.settings",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/src/header_footers" />
@@ -218,56 +99,62 @@
       <recent name="$PROJECT_DIR$/packages/linio" />
     </key>
   </component>
-  <component name="RunManager" selected="Flutter Test.Coverage">
-    <configuration name="Tests in simple_test.dart (1)" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/test/builder/simple_test.dart" />
-      <option name="testName" value="simple_test.dart" />
+  <component name="RunManager" selected="Dart Test.Tests in linio">
+    <configuration name="Tests in file_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/packages/linio/test/formatter/file_test.dart" />
+      <option name="testName" value="file_test.dart" />
       <method v="2" />
     </configuration>
-    <configuration name="Tests in simple_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/test/formatter/simple_test.dart" />
-      <option name="testName" value="simple_test.dart" />
+    <configuration name="Tests in linio" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/packages/linio" />
+      <option name="scope" value="FOLDER" />
       <method v="2" />
     </configuration>
-    <configuration name="single formatter in simple_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/test/formatter/simple_test.dart" />
+    <configuration name="single formatter in integration_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/packages/linio/test/integration/integration_test.dart" />
       <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
       <option name="testName" value="single formatter" />
       <method v="2" />
     </configuration>
-    <configuration name="single test in level_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/test/filter/level_test.dart" />
+    <configuration name="single formatter in tag_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/packages/linio/test/filter/tag_test.dart" />
       <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
-      <option name="testName" value="single test" />
+      <option name="testName" value="single formatter" />
       <method v="2" />
     </configuration>
-    <configuration name="tag formatter in simple_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/test/builder/simple_test.dart" />
+    <configuration name="tag header in tag_manager_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/packages/linio/test/tag/tag_manager_test.dart" />
       <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
-      <option name="testName" value="tag formatter" />
+      <option name="testName" value="tag header" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/packages/linio/example/lib/main.dart" />
       <method v="2" />
     </configuration>
     <configuration name="Coverage" type="FlutterTestConfigType" factoryName="Flutter Test">
       <option name="testDir" value="$PROJECT_DIR$/test/" />
+      <option name="useRegexp" value="false" />
       <option name="additionalArgs" value="" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Dart Test.single test in level_test.dart" />
-      <item itemvalue="Dart Test.single formatter in simple_test.dart" />
-      <item itemvalue="Dart Test.Tests in simple_test.dart" />
-      <item itemvalue="Dart Test.Tests in simple_test.dart (1)" />
-      <item itemvalue="Dart Test.tag formatter in simple_test.dart" />
-      <item itemvalue="Flutter.example/lib/main.dart" />
+      <item itemvalue="Dart Test.Tests in file_test.dart" />
+      <item itemvalue="Dart Test.Tests in linio" />
+      <item itemvalue="Dart Test.single formatter in integration_test.dart" />
+      <item itemvalue="Dart Test.single formatter in tag_test.dart" />
+      <item itemvalue="Dart Test.tag header in tag_manager_test.dart" />
+      <item itemvalue="Flutter.main.dart" />
+      <item itemvalue="Flutter.main" />
       <item itemvalue="Flutter Test.Coverage" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Dart Test.Tests in simple_test.dart (1)" />
-        <item itemvalue="Dart Test.tag formatter in simple_test.dart" />
-        <item itemvalue="Dart Test.Tests in simple_test.dart" />
-        <item itemvalue="Dart Test.single formatter in simple_test.dart" />
-        <item itemvalue="Dart Test.single test in level_test.dart" />
+        <item itemvalue="Dart Test.Tests in linio" />
+        <item itemvalue="Dart Test.single formatter in tag_test.dart" />
+        <item itemvalue="Dart Test.Tests in file_test.dart" />
+        <item itemvalue="Dart Test.tag header in tag_manager_test.dart" />
+        <item itemvalue="Dart Test.single formatter in integration_test.dart" />
       </list>
     </recent_temporary>
   </component>
@@ -391,7 +278,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="improvements &amp; tests" />
@@ -409,7 +295,8 @@
     <MESSAGE value="reorganize dependencies" />
     <MESSAGE value="readme init improvement" />
     <MESSAGE value="add author and proper home" />
-    <option name="LAST_COMMIT_MESSAGE" value="add author and proper home" />
+    <MESSAGE value="redesign" />
+    <option name="LAST_COMMIT_MESSAGE" value="redesign" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -423,6 +310,41 @@
           <url>file://$PROJECT_DIR$/lib/src/managers/linio_level_manager.dart</url>
           <line>7</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/lib/src/instance/linio.dart</url>
+          <line>115</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/lib/src/instance/linio.dart</url>
+          <line>103</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/test/mock/printers.dart</url>
+          <line>7</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/lib/src/printer/linio_printer.dart</url>
+          <line>10</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/lib/src/printer/linio_printer.dart</url>
+          <line>15</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/lib/src/instance/linio.dart</url>
+          <line>110</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/packages/linio/lib/src/instance/linio.dart</url>
+          <line>184</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

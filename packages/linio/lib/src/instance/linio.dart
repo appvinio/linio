@@ -1,6 +1,7 @@
 part of linio;
 
 Linio get LC => Linio._instances['main']!;
+
 LinioInlineBuilder get L => LinioInlineBuilder.b(name: 'main');
 
 class Linio {
@@ -46,14 +47,15 @@ class Linio {
       List<LinioHeaderFooter> headers = const [],
       List<LinioCommand> manipulators = const [],
       List<LinioFilter> filters = const [],
+      List<LinioPlugin> plugins = const [],
       String name = 'main'}) {
     _instances[name] = Linio._(
-      printers: printers,
-      formatters: formatters,
-      headers: headers,
-      manipulators: manipulators,
-      filters: filters,
-    );
+        printers: printers,
+        formatters: formatters,
+        headers: headers,
+        manipulators: manipulators,
+        filters: filters,
+        plugins: plugins);
     return _instances[name]!;
   }
 
@@ -98,25 +100,46 @@ class Linio {
 
   late StreamController<Function> streamController;
 
-  void log(dynamic logOrCommand, [dynamic log]) {
-    final linioCommand = commandRunner.argParser
-        .parse((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' '));
-    List<String> linioCommandResult;
+  void command(dynamic command) {
+    final linioCommand = commandRunner.argParser.parse((command).toString().split(' '));
     if (linioCommand.command?.name?.isNotEmpty == true) {
-      linioCommandResult = commandRunner
-              .run((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' ')) ??
-          [];
-      if (log == null && logOrCommand != null) {
-        logOrCommand = null;
-      }
-    } else {
-      linioCommandResult = [];
+      final linioCommandResult = commandRunner.run((command).toString().split(' ')) ?? [];
+      LinioLogType linioLogType = logType(linioCommand);
+      LinioLogLevel linioLogLevel = logLevel(linioCommand);
+      final options = LinioOptions(linioLogType, linioLogLevel, '');
+
+      _print(linioCommand.command!, linioCommandResult, null, options);
     }
+  }
 
-    final linioLog = log ?? logOrCommand;
-    final tagCandidate = log != null ? (linioCommand.rest.isNotEmpty ? linioCommand.rest.first : '') : '';
-    String linioTag = linioCommand['tag'] ?? (log != null ? tagCandidate : '');
+  void log(dynamic message, {LinioOptions options = const LinioOptions.standard(), String? tag}) {
+    final linioCommand = commandRunner.argParser
+        .parse(message.toString().split(' '));
+    // List<String> linioCommandResult;
+    // if (linioCommand.command?.name?.isNotEmpty == true) {
+    //   //   linioCommandResult = commandRunner
+    //   //           .run((log != null ? logOrCommand : (logOrCommand is String ? logOrCommand : '')).toString().split(' ')) ??
+    //   //       [];
+    //   //   if (log == null && logOrCommand != null) {
+    //   //     logOrCommand = null;
+    //   //   }
+    //   // } else {
+    //   //   linioCommandResult = [];
+    // }
 
+    final linioLog = (message is String) ? (linioCommand.rest.isNotEmpty ? linioCommand.rest.first : '' ) : message;
+    String linioTag = tag ?? linioCommand['tag'] ?? '';
+
+    LinioLogType linioLogType = logType(linioCommand);
+    LinioLogLevel linioLogLevel = logLevel(linioCommand);
+    final options = LinioOptions(linioLogType, linioLogLevel, linioTag);
+    if (filters.any((element) => !element.shouldLog(options))) {
+      return;
+    }
+    _print(linioCommand, [], linioLog, options);
+  }
+
+  LinioLogType logType(ArgResults linioCommand) {
     LinioLogType linioLogType = LinioLogType.static;
     switch (linioCommand['mode']) {
       case 'l':
@@ -128,6 +151,10 @@ class Linio {
         linioLogType = LinioLogType.static;
         break;
     }
+    return linioLogType;
+  }
+
+  LinioLogLevel logLevel(ArgResults linioCommand) {
     LinioLogLevel linioLogLevel = LinioLogLevel.debug;
     switch (linioCommand['level']) {
       case 'd':
@@ -151,15 +178,11 @@ class Linio {
         linioLogLevel = LinioLogLevel.fatal;
         break;
     }
-    final options = LinioOptions(linioLogType, linioLogLevel, linioTag, linioLog ?? '', linioCommand);
-    if (filters.any((element) => !element.shouldLog(options))) {
-      return;
-    }
-    _print(linioCommand, linioCommandResult, linioLog, options);
+    return linioLogLevel;
   }
 
   void _print(ArgResults command, List<String> commandResult, dynamic log, LinioOptions options) {
     final formatter = formatters.firstWhere((element) => element.handleLog(log));
-    printers.forEach((printer) => printer.print(command, [...commandResult, ...formatter.format(log)], options));
+    printers.forEach((printer) => printer.print(command, [...commandResult, if (log != null) ...formatter.format(log)], options));
   }
 }

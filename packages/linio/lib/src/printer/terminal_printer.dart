@@ -6,7 +6,6 @@ class TerminalPrinter extends LinioPrinter {
   @override
   void printLog(ArgResults command, List<String> log, LinioOptions options) {
     log.forEach((element) {
-      // stdout.writeln('\r$element');
       print('$element');
     });
   }

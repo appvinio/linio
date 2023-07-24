@@ -27,7 +27,7 @@ void main() {
       final console = TestConsole();
       Linio.custom(printers: [console], headers: [levelHeader, tagHeader]);
       LinioInlineBuilder builder = LinioInlineBuilder.b(name: 'main');
-      builder.t('TAG').l(LinioLogLevel.error).log('test');
+      builder.t('TAG').e.log('test');
       expect(console.logs, [
         '[ERROR] TAG test',
       ]);
@@ -51,7 +51,7 @@ void main() {
       final console = TestConsole();
       Linio.custom(printers: [console], headers: [tagHeader]);
       LinioInlineBuilder builder = LinioInlineBuilder.b(name: 'main');
-      builder.log('TAG', 'test');
+      builder.t('TAG').log('test');
       expect(console.logs, [
         'TAG test',
       ]);
@@ -75,7 +75,7 @@ void main() {
       final console = TestConsole();
       Linio.custom(printers: [console], headers: [levelHeader]);
       LinioInlineBuilder builder = LinioInlineBuilder.b(name: 'main');
-      builder.l(LinioLogLevel.error).log('test');
+      builder.e.log('test');
       expect(console.logs, [
         '[ERROR] test',
       ]);

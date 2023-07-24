@@ -15,17 +15,21 @@ class LinioInlineBuilder {
     return this;
   }
 
-  LinioInlineBuilder get d => l(LinioLogLevel.debug);
+  LinioInlineBuilder get d => level(LinioLogLevel.debug);
 
-  LinioInlineBuilder get i => l(LinioLogLevel.info);
+  LinioInlineBuilder get i => level(LinioLogLevel.info);
 
-  LinioInlineBuilder get w => l(LinioLogLevel.warn);
+  LinioInlineBuilder get w => level(LinioLogLevel.warn);
 
-  LinioInlineBuilder get e => l(LinioLogLevel.error);
+  LinioInlineBuilder get e => level(LinioLogLevel.error);
 
-  LinioInlineBuilder get f => l(LinioLogLevel.fatal);
+  LinioInlineBuilder get f => level(LinioLogLevel.fatal);
 
-  LinioInlineBuilder l(LinioLogLevel level) {
+  LinioInlineBuilder get s => mode(LinioLogType.static);
+
+  LinioInlineBuilder get l => mode(LinioLogType.live);
+
+  LinioInlineBuilder level(LinioLogLevel level) {
     String value;
     switch (level) {
       case LinioLogLevel.debug:
@@ -48,19 +52,31 @@ class LinioInlineBuilder {
     return this;
   }
 
-  logPoint() {
-    linio.log('log_point');
+  LinioInlineBuilder mode(LinioLogType type) {
+    String value;
+    switch (type) {
+      case LinioLogType.live:
+        value = 'l';
+        break;
+      case LinioLogType.static:
+        value = 's';
+        break;
+    }
+    params.add('-m $value');
+    return this;
   }
 
-  log(dynamic logOrCommand, [dynamic log]) {
+  logPoint() {
+    linio.command('log_point');
+  }
+
+  log(dynamic logOrCommand) {
     String options = params.join(' ');
     options = options.isNotEmpty ? "$options $logOrCommand" : logOrCommand;
-    linio.log(
-        options,
-        log != null
-            ? log
-            : logOrCommand != options
-                ? logOrCommand
-                : null);
+    linio.log(options);
+  }
+
+  command(String command) {
+    linio.command(command);
   }
 }

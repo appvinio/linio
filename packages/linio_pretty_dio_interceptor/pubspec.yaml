@@ -1,13 +1,13 @@
 name: linio_pretty_dio_interceptor
 description: This library is a wrapper for dio_pretty_logger to work with linio
-version: 0.0.7
+version: 0.0.7+1
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
-  linio: ^0.0.6+1
+  linio: ^0.0.7+1
   dio: ^4.0.6
 
 dev_dependencies:

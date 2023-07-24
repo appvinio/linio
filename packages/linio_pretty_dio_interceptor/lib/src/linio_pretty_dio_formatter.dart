@@ -182,7 +182,7 @@ class LinioPrettyDioFormatter implements LinioFormatter {
 
   String _printLine([String pre = '']) => '$pre${'═' * maxWidth}';
 
-  List<String> _printKV(String key, Object v) {
+  List<String> _printKV(String key, Object? v) {
     final logs = <String>[];
     final pre = '╟ $key: ';
     final msg = v.toString();

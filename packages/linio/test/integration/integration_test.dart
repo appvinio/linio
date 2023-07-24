@@ -28,7 +28,7 @@ void main() {
     test('single formatter', () {
       final console = TestConsole();
       Linio linio = Linio.custom(printers: [console], headers: [levelHeader, tagHeader]);
-      linio.log('-l fatal -t TEST', 'test');
+      linio.log('-l fatal -t TEST test');
       expect(console.logs, [
         '[FATAL] TEST test',
       ]);

@@ -11,7 +11,7 @@ void main() {
       final console = TestConsole();
       Linio linio = Linio.custom(printers: [console], headers: [testHeader1]);
       linio.log('test');
-      linio.log('TAG', 'test');
+      linio.log('test', tag: 'TAG');
       expect(console.logs, ['test', 'TAG test']);
     });
   });

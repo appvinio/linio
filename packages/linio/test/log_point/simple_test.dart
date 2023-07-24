@@ -19,8 +19,8 @@ void main() {
         LogPointCommand(),
       ]);
       LinioInlineBuilder builder = LinioInlineBuilder.b(name: 'main');
-      linio.log('log_point');
-      builder.log('log_point');
+      linio.command('log_point');
+      builder.command('log_point');
       expect(console.logs, [
         '(file:///Users/rafaldziuryk/AndroidStudioProjects/linio/packages/linio/test/log_point/simple_test.dart:22:13)',
         '(file:///Users/rafaldziuryk/AndroidStudioProjects/linio/packages/linio/test/log_point/simple_test.dart:23:15)',

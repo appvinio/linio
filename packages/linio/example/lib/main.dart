@@ -29,7 +29,7 @@ void main() {
       SimpleLinioFormatter(),
     ],
   );
-  LC.log('stopwatch -s counter_timer', 'Start Stopwatch');
+  LC.command('stopwatch -s counter_timer');
 
   runApp(MyApp());
 }
@@ -78,7 +78,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
-    LC.log('stopwatch -s counter_timer', 'Start timer');
+    LC.command('stopwatch -s counter_timer');
     super.initState();
   }
 
@@ -111,6 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Divider(),
           //Levels
           levels(),
+          Divider(),
+          //Types
+          type(),
         ],
       ),
     );
@@ -147,13 +150,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      L.log('tag_manager -b all');
+                      L.command('tag_manager -b all');
                     },
                     child: Text('Block all'),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      L.log('tag_manager -a all');
+                      L.command('tag_manager -a all');
                     },
                     child: Text('Allow all'),
                   ),
@@ -203,13 +206,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(
               onPressed: () {
-                LC.log('simple_tag', 'simple message');
+                LC.log('simple message', tag: "simple_tag");
               },
               child: Text('Log simple_tag'),
             ),
             ElevatedButton(
               onPressed: () {
-                LC.log('compound_tag', 'simple log');
+                LC.log('simple log', tag: 'compound_tag');
               },
               child: Text('log with compound_tag'),
             ),
@@ -251,7 +254,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: [
         ElevatedButton(
           onPressed: () {
-            LC.log('simple_tag', 'simple log');
+            LC.log('simple message', tag: "simple_tag");
           },
           child: Text('log with simple_tag'),
         ),
@@ -276,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
         L.w.log('simple log');
         L.e.log('simple log');
         L.f.log('simple log');
-        LC.log('simple_tag', 'simple log');
+        LC.log('simple message', tag: "simple_tag");
       },
       child: Text('Grep log'),
     );
@@ -315,6 +318,26 @@ class _MyHomePageState extends State<MyHomePage> {
             L.f.log('log_point');
           },
           child: Text('F'),
+        ),
+      ],
+    );
+  }
+
+  Widget type() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            L.d.log('s log_point');
+          },
+          child: Text('Static'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            L.i.log('l log_point');
+          },
+          child: Text('Live'),
         ),
       ],
     );
